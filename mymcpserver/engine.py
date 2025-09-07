@@ -38,8 +38,8 @@ class PlaylistEngine:
             audio_data = self.df[self.audio_features].fillna(0.5)
             self.df[self.audio_features] = self.scaler.fit_transform(audio_data)
             
-            print(f"Dataset loaded: {len(self.df)} songs")
-            print(f"Columns available: {list(self.df.columns)}")
+            #print(f"Dataset loaded: {len(self.df)} songs")
+            #print(f"Columns available: {list(self.df.columns)}")
             
         except Exception as e:
             print(f"Error loading dataset: {e}")
@@ -89,7 +89,7 @@ class PlaylistEngine:
         if len(filtered_df) < size:
             selected = filtered_df.copy()
         else:
-            selected = filtered_df.sample(n=size, random_state=16)
+            selected = filtered_df.sample(n=size)
         
         return self._format_songs_output(selected)
     
@@ -190,7 +190,7 @@ class PlaylistEngine:
         # Apply diversity logic
         if diversity_level == "low":
             # More similar songs
-            selected = filtered_df.sample(n=min(size, len(filtered_df)), random_state=42)
+            selected = filtered_df.sample(n=min(size, len(filtered_df)))
         elif diversity_level == "high":
             # More diverse selection using audio features
             if len(filtered_df) <= size:

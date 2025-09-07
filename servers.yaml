@@ -1,4 +1,5 @@
 music:
-  type: stdio
-  cmd: ["python", "mymcpserver/main.py"]
-  cwd: "."
+  type: fastmcp
+  cmd: ["python", "main.py"]  
+  cwd: "mymcpserver"
+  config_module: "mymcpserver/music_tools.py"
