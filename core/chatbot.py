@@ -2,7 +2,7 @@ import os
 import yaml
 import requests
 import json
-from typing import Dict, List, Any, Tuple, Optional
+from typing import Dict, List, Any, Tuple
 
 from clients.fastmcp import FastMCPClient
 from clients.stdio import StdioMCPClient
@@ -159,8 +159,12 @@ class ModularMCPChatbot:
                 "content-type": "application/json",
             }
             
+            # Usar configuraciones de ahorro
+            from .config import DEFAULT_MODEL, MAX_TOKENS, MAX_CONVERSATION_HISTORY, MAX_RESULT_LENGTH
+            
             messages = []
-            for role, content in self.conversation_history[-5:]:
+            # Limitar historial según configuración
+            for role, content in self.conversation_history[-MAX_CONVERSATION_HISTORY:]:
                 messages.append({"role": role, "content": content})
             messages.append({"role": "user", "content": message})
             
@@ -180,12 +184,11 @@ class ModularMCPChatbot:
 
 Available services: {list(self.mcps.keys())}
 
-Be conversational and natural. Use the appropriate tools when users ask for specific functionality."""
+Be conversational and natural. Use the appropriate tools when users ask for specific functionality. Keep responses concise."""
             
-            # Construir payload básico
             payload = {
-                "model": "claude-3-haiku-20240307",
-                "max_tokens": 1024,
+                "model": DEFAULT_MODEL,  
+                "max_tokens": MAX_TOKENS,  
                 "system": system_message,
                 "messages": messages
             }
@@ -221,9 +224,12 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
                     
                     if server:
                         tool_result = await self.call_mcp_tool(server, tool_name, tool_input)
-                        tool_results.append(f"🔧 Tool result: {tool_result}")
+                        # Truncar resultado de herramienta para ahorrar tokens
+                        if len(tool_result) > MAX_RESULT_LENGTH:
+                            tool_result = tool_result[:MAX_RESULT_LENGTH] + "..."
+                        tool_results.append(f"Tool result: {tool_result}")
                     else:
-                        tool_results.append(f"❌ Tool {tool_name} not found in any server")
+                        tool_results.append(f"Tool {tool_name} not found in any server")
             
             if tool_results:
                 if response_text:
@@ -241,13 +247,14 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
     
     async def chat(self):
         """Main chat loop"""
-        print("🤖 Modular Multi-Service Chatbot")
+        print("=" * 40)
+        print("Modular Multi-Service Chatbot")
         print("=" * 40)
         
         await self.load_mcps()
         
         print("💬 You can chat naturally! The assistant will use appropriate tools automatically.")
-        print("📝 Commands: '/quit' to exit, '/log' to see interaction log, '/servers' for server info")
+        print("📝 Commands: '/quit' to exit, '/log' for MCP interactions, '/history' for conversation, '/servers' for server info")
         print()
         
         try:
@@ -282,11 +289,81 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
     
     async def cleanup(self):
         """Limpiar recursos al finalizar"""
+        # Auto-guardar conversación si tiene mensajes
+        if self.conversation_history:
+            self._auto_save_conversation()
+        
+        # Cerrar conexiones MCP
         for name, info in self.mcps.items():
             try:
                 await info["client"].close()
             except:
                 pass
+    
+    def _auto_save_conversation(self):
+        """Auto-guardar conversación en un solo archivo JSON"""
+        try:
+            import json
+            from datetime import datetime
+            import os
+            
+            filename = "conversation_history.json"
+            
+            # Leer archivo existente si existe
+            if os.path.exists(filename):
+                try:
+                    with open(filename, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                except (json.JSONDecodeError, KeyError):
+                    data = {"sessions": []}
+            else:
+                data = {"sessions": []}
+            
+            # Agregar nueva sesión solo si hay mensajes
+            if self.conversation_history:
+                session = {
+                    "timestamp": datetime.now().isoformat(),
+                    "messages": self.conversation_history
+                }
+                data["sessions"].append(session)
+                
+                # Guardar archivo actualizado
+                with open(filename, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, indent=2, ensure_ascii=False)
+                
+                print(f"Conversation saved to {filename}")
+            
+        except Exception as e:
+            print(f"Failed to save conversation: {e}")
+    
+    def _print_conversation_history(self):
+        """Mostrar historial de conversación"""
+        print("\n" + "="*60)
+        print("CONVERSATION HISTORY")
+        print("="*60)
+        
+        if not self.conversation_history:
+            print("No conversation history yet.")
+            return
+        
+        for i, (role, content) in enumerate(self.conversation_history, 1):
+            role_name = "User" if role == "user" else "Assistant"
+            
+            print(f"\n[{i}] {role_name}:")
+            print("-" * 40)
+            
+            if len(content) > 200:
+                print(f"{content[:200]}...")
+                print(f"[Message truncated - {len(content)} total characters]")
+            else:
+                print(content)
+        
+        print(f"\nTotal messages: {len(self.conversation_history)}")
+        user_count = len([h for h in self.conversation_history if h[0] == "user"])
+        assistant_count = len([h for h in self.conversation_history if h[0] == "assistant"])
+        print(f"User messages: {user_count}")
+        print(f"Assistant messages: {assistant_count}")
+        print("="*60)
     
     def get_conversation_history(self) -> List[Tuple[str, str]]:
         """Obtener historial de conversación"""
