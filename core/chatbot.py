@@ -248,7 +248,7 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
     async def chat(self):
         """Main chat loop"""
         print("=" * 40)
-        print("Modular Multi-Service Chatbot")
+        print("Multi-Service Chatbot")
         print("=" * 40)
         
         await self.load_mcps()
