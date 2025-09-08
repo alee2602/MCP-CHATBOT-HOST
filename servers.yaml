@@ -3,3 +3,15 @@ music:
   cmd: ["python", "main.py"]  
   cwd: "mymcpserver"
   config_module: "mymcpserver/music_tools.py"
+
+filesystem:
+  type: stdio
+  cmd: ["node", "C:/Users/Ale/AppData/Roaming/npm/node_modules/@modelcontextprotocol/server-filesystem/dist/index.js", "."]
+  cwd: "."
+  config_module: "configs/filesystem_tools.py"
+
+git:
+  type: stdio
+  cmd: ["node", "C:/Users/Ale/AppData/Roaming/npm/node_modules/@mseep/git-mcp-server/dist/index.js", "--repository", "."]
+  cwd: "."
+  config_module: "configs/git_tools.py"

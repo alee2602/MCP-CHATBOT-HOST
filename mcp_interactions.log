@@ -9,3 +9,132 @@
 2025-09-07 20:42:57,423 - MCP_Interactions - INFO - [music] analyze_song({'song_name': 'Boyfriend', 'artist': 'Big Time Rush'}) -> SUCCESS
 2025-09-07 20:46:51,887 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
 2025-09-07 20:46:59,104 - MCP_Interactions - INFO - [music] analyze_song({'song_name': 'Boyfriend', 'artist': 'Big Time Rush'}) -> SUCCESS
+2025-09-07 22:34:36,335 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 22:34:36,363 - MCP_Interactions - ERROR - Server [filesystem] (stdio): failed: [WinError 2] The system cannot find the file specified
+2025-09-07 22:34:36,386 - MCP_Interactions - ERROR - Server [git] (stdio): failed: [WinError 2] The system cannot find the file specified
+2025-09-07 22:38:44,821 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 22:38:45,134 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 22:38:46,175 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 22:40:32,624 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-07 22:41:05,060 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'mcp_demo.txt', 'content': 'This file demonstrates the integration between filesystem and git MCP servers in our chatbot.'}) -> SUCCESS
+2025-09-07 22:41:37,559 - MCP_Interactions - INFO - [filesystem] list_directory({}) -> SUCCESS
+2025-09-07 22:42:31,577 - MCP_Interactions - INFO - [git] git_init({'path': '.'}) -> SUCCESS
+2025-09-07 22:45:56,465 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 22:45:56,730 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 22:45:57,755 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 22:51:18,400 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-07 22:53:31,401 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 22:53:31,668 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 22:53:32,664 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 22:53:39,981 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-07 22:56:25,278 - MCP_Interactions - INFO - [git] git_init({'path': '.'}) -> SUCCESS
+2025-09-07 22:57:14,050 - MCP_Interactions - INFO - [git] git_init({'path': '.'}) -> SUCCESS
+2025-09-07 22:57:33,271 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 22:57:33,576 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 22:57:34,734 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 22:57:43,288 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-07 22:58:04,521 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-07 22:59:22,081 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'git_test.txt', 'content': 'If you can read this, it means it worked!'}) -> SUCCESS
+2025-09-07 23:00:00,237 - MCP_Interactions - INFO - [git] git_add({'files': ['.']}) -> SUCCESS
+2025-09-07 23:05:30,266 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 23:05:30,614 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 23:05:31,715 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 23:05:35,340 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-07 23:05:53,984 - MCP_Interactions - INFO - [git] git_add({'files': ['mcp_demo.txt']}) -> SUCCESS
+2025-09-07 23:06:35,787 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'mcp_demo.txt', 'content': 'Houston, we have a problem'}) -> SUCCESS
+2025-09-07 23:07:00,496 - MCP_Interactions - INFO - [git] git_add({'files': ['mcp_demo.txt']}) -> SUCCESS
+2025-09-07 23:07:35,662 - MCP_Interactions - INFO - [git] git_commit({'message': 'demo: added test file'}) -> SUCCESS
+2025-09-07 23:13:45,522 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 23:13:45,793 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 23:13:46,825 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 23:17:33,957 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'git_test.txt', 'content': 'Here I am, once again...'}) -> SUCCESS
+2025-09-07 23:17:47,552 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-07 23:18:22,508 - MCP_Interactions - INFO - [git] git_add({'files': ['git_test.txt']}) -> SUCCESS
+2025-09-07 23:18:46,875 - MCP_Interactions - INFO - [git] git_push({}) -> SUCCESS
+2025-09-07 23:19:38,713 - MCP_Interactions - INFO - [git] git_push({}) -> SUCCESS
+2025-09-07 23:25:39,110 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 23:25:39,460 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 23:25:39,556 - MCP_Interactions - ERROR - Server [git] (stdio): failed: No response from server
+2025-09-07 23:27:07,468 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 23:27:07,749 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 23:27:07,826 - MCP_Interactions - ERROR - Server [git] (stdio): failed: No response from server
+2025-09-07 23:28:06,978 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 23:28:07,246 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 23:28:08,214 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 23:29:01,912 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 23:29:02,198 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 23:29:03,205 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 23:29:27,123 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-07 23:30:11,220 - MCP_Interactions - INFO - [git] git_add({'files': ['git_test.txt']}) -> SUCCESS
+2025-09-07 23:30:40,927 - MCP_Interactions - INFO - [git] git_push({}) -> SUCCESS
+2025-09-07 23:31:29,945 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-07 23:31:46,689 - MCP_Interactions - INFO - [git] git_add({'files': ['git_test.txt']}) -> SUCCESS
+2025-09-07 23:32:39,552 - MCP_Interactions - INFO - [git] git_commit({'message': 'demo: yet another test'}) -> SUCCESS
+2025-09-07 23:33:13,649 - MCP_Interactions - INFO - [git] git_push({}) -> SUCCESS
+2025-09-07 23:34:18,211 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'git_test.txt', 'content': "Ohhh, it's gonna be a big night"}) -> SUCCESS
+2025-09-07 23:35:16,910 - MCP_Interactions - INFO - [git] git_add({'files': ['git_test.txt']}) -> SUCCESS
+2025-09-07 23:37:26,480 - MCP_Interactions - INFO - [git] git_add({'files': ['git_test.txt']}) -> SUCCESS
+2025-09-07 23:38:11,420 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 23:38:11,700 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 23:38:12,667 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 23:38:52,568 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'git_test.txt', 'content': '1234'}) -> SUCCESS
+2025-09-07 23:39:04,970 - MCP_Interactions - INFO - [git] git_add({'files': ['git_test.txt']}) -> SUCCESS
+2025-09-07 23:39:23,041 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-07 23:39:41,465 - MCP_Interactions - INFO - [git] git_commit({'message': 'demo: last git test'}) -> SUCCESS
+2025-09-07 23:40:05,468 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-07 23:40:05,729 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-07 23:40:06,784 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-07 23:40:29,842 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-07 23:40:44,983 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'git_test.txt', 'content': '123456789'}) -> SUCCESS
+2025-09-07 23:41:09,018 - MCP_Interactions - INFO - [git] git_add({'files': ['git_test.txt']}) -> SUCCESS
+2025-09-08 00:29:30,337 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-08 00:29:30,698 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-08 00:29:32,089 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-08 00:30:29,082 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-08 00:30:39,593 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-08 00:30:52,462 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-08 00:30:52,630 - MCP_Interactions - INFO - [git] git_add({}) -> SUCCESS
+2025-09-08 00:31:25,669 - MCP_Interactions - INFO - [git] git_commit({'message': 'demo: last git test'}) -> SUCCESS
+2025-09-08 00:31:36,793 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-08 00:33:22,114 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-08 00:33:22,382 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-08 00:33:23,319 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-08 00:33:31,962 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-08 00:34:17,439 - MCP_Interactions - INFO - [git] git_add({'files': ['*']}) -> SUCCESS
+2025-09-08 00:34:28,550 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-08 00:34:28,896 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-08 00:34:30,041 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-08 00:34:44,307 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-08 00:35:07,698 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-08 00:35:17,656 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-08 00:37:15,449 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-08 00:37:15,731 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-08 00:37:16,723 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-08 00:37:20,518 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-08 00:37:31,461 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-08 00:37:43,937 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'demo_mcp.txt', 'content': 'This file demonstrates MCP integration between filesystem and git servers'}) -> SUCCESS
+2025-09-08 00:39:37,689 - MCP_Interactions - INFO - [git] git_commit({'message': 'demo: MCP integration filesystem and git'}) -> SUCCESS
+2025-09-08 00:42:13,918 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-08 00:42:14,198 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-08 00:42:15,227 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-08 00:42:24,030 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-08 00:42:41,860 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-08 00:42:42,123 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-08 00:42:43,077 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-08 00:42:57,060 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-08 00:43:33,827 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'demo.txt', 'content': 'Hello world!'}) -> SUCCESS
+2025-09-08 00:44:16,841 - MCP_Interactions - INFO - [git] git_add({'files': ['demo.txt']}) -> SUCCESS
+2025-09-08 00:46:17,197 - MCP_Interactions - INFO - [git] git_status({}) -> SUCCESS
+2025-09-08 00:49:50,581 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-08 00:49:50,853 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-08 00:49:51,828 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-08 00:50:15,758 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-08 00:50:29,002 - MCP_Interactions - INFO - [git] git_add({'files': ['demo.txt']}) -> SUCCESS
+2025-09-08 00:51:25,803 - MCP_Interactions - INFO - [git] git_commit({'message': 'test'}) -> SUCCESS
+2025-09-08 00:53:06,427 - MCP_Interactions - INFO - [git] git_push({'branch': 'main', 'remote': 'origin'}) -> SUCCESS
+2025-09-08 00:53:37,661 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-08 00:54:04,787 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'demo.txt', 'content': "Hello, it's me"}) -> SUCCESS
+2025-09-08 00:54:24,764 - MCP_Interactions - INFO - [git] git_add({'files': ['demo.txt']}) -> SUCCESS
+2025-09-08 00:55:54,383 - MCP_Interactions - INFO - [git] git_commit({'message': 'demo: test'}) -> SUCCESS
+2025-09-08 00:56:34,244 - MCP_Interactions - INFO - [git] git_add({'files': ['demo.txt']}) -> SUCCESS
+2025-09-08 00:56:53,992 - MCP_Interactions - INFO - [git] git_push({}) -> SUCCESS
