@@ -1,3 +1,4 @@
 .env
 __pycache__
 mymcpserver/__pycache__
+core/__pycache__
