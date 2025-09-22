@@ -206,5 +206,7 @@ def color_mixer(color1: str, color2: str, ratio: float = 0.5) -> str:
         return f"Error: {str(e)}"
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))
-    mcp.run(host="0.0.0.0", port=port)
+    if os.getenv("RENDER"):
+        mcp.run()
+    else:
+        mcp.run()
