@@ -255,3 +255,64 @@
 2025-09-22 00:18:36,612 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
 2025-09-22 00:18:37,063 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
 2025-09-22 00:18:37,405 - MCP_Interactions - INFO - Server [colors] (http): connected - 0 tools available
+2025-09-22 00:23:50,111 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 00:23:50,348 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 00:23:51,279 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 00:23:52,390 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 00:23:52,824 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 00:23:53,384 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-22 00:25:05,584 - MCP_Interactions - ERROR - [colors] hex_to_rgb({'hex_color': 'FF0000'}) -> ERROR: {'code': -1, 'message': "'FunctionTool' object is not callable"}
+2025-09-22 00:25:26,227 - MCP_Interactions - ERROR - [colors] random_color({}) -> ERROR: {'code': -1, 'message': "'FunctionTool' object is not callable"}
+2025-09-22 00:34:52,411 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 00:34:52,656 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 00:34:53,571 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 00:34:54,867 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 00:34:55,375 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 00:34:55,762 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-22 00:35:09,141 - MCP_Interactions - INFO - [colors] hex_to_rgb({'hex_color': 'FF0000'}) -> SUCCESS
+2025-09-22 00:35:54,422 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 00:45:56,078 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 00:49:48,151 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 00:50:24,943 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 00:53:37,256 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 00:53:56,543 - MCP_Interactions - INFO - [colors] hex_to_rgb({'hex_color': 'FF0000'}) -> SUCCESS
+2025-09-22 01:06:39,563 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 01:06:39,823 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 01:06:40,895 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 01:06:42,065 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 01:06:42,567 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 01:06:46,666 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002A12BF63B50>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 01:07:08,406 - MCP_Interactions - ERROR - [colors] random_color({}) -> ERROR: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002A12BFC4FA0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 01:08:07,768 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 01:08:08,048 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 01:08:09,052 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 01:08:10,225 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 01:08:10,653 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 01:08:11,303 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-22 01:08:16,251 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:10:49,551 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 01:10:49,806 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 01:10:50,776 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 01:10:51,888 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 01:10:52,322 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 01:10:54,851 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-22 01:11:00,969 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:11:31,367 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:11:47,080 - MCP_Interactions - INFO - [colors] hex_to_rgb({'hex_color': 'FF0000'}) -> SUCCESS
+2025-09-22 01:13:28,796 - MCP_Interactions - INFO - [colors] rgb_to_hex({'r': 255, 'g': 0, 'b': 0}) -> SUCCESS
+2025-09-22 01:13:33,628 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:15:45,375 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:23:51,787 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:24:11,018 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:25:51,075 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:26:18,428 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:45:02,384 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 01:45:02,635 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 01:45:03,588 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 01:45:04,705 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 01:45:05,183 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 01:45:07,601 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-22 01:45:12,307 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
+2025-09-22 01:45:30,902 - MCP_Interactions - INFO - [colors] color_palette({'base_color': '#0000FF'}) -> SUCCESS
+2025-09-22 01:45:44,870 - MCP_Interactions - INFO - [colors] color_palette({'base_color': 'FF0000'}) -> SUCCESS
+2025-09-22 01:46:08,191 - MCP_Interactions - INFO - [colors] hex_to_rgb({'hex_color': 'FF0000'}) -> SUCCESS

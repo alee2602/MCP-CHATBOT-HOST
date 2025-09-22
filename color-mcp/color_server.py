@@ -1,20 +1,11 @@
-import asyncio
 import json
 import os
-import sys
-import threading
-import time
 from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
-
-# Importar MCP
 from fastmcp import FastMCP
 
-# Crear servidor MCP
 mcp = FastMCP("ColorTools")
-
-# === FUNCIONES DE UTILIDAD (NO MCP) ===
 
 def convert_hex_to_rgb(hex_color: str) -> str:
     """Convert HEX color to RGB values - Utility function"""
@@ -75,7 +66,6 @@ def generate_color_palette(base_color: str, palette_type: str = "complementary")
             log_mcp_response("color_palette", error)
             return error
         
-        # Convert to RGB then HSV
         rgb = tuple(int(base_color[i:i+2], 16) for i in (0, 2, 4))
         r, g, b = [x/255.0 for x in rgb]
         h, s, v = colorsys.rgb_to_hsv(r, g, b)
@@ -110,8 +100,6 @@ def generate_color_palette(base_color: str, palette_type: str = "complementary")
         log_mcp_response("color_palette", error)
         return error
 
-# === HERRAMIENTAS MCP (WRAPPERS) ===
-
 @mcp.tool()
 def hex_to_rgb(hex_color: str) -> str:
     """Convert HEX color to RGB values"""
@@ -132,12 +120,9 @@ def color_palette(base_color: str, palette_type: str = "complementary") -> str:
     """Generate color palette based on a base color"""
     return generate_color_palette(base_color, palette_type)
 
-# === LOGGING PARA ANÁLISIS ===
-
 mcp_log = []
 
 def log_mcp_call(method, params):
-    """Log MCP method call"""
     timestamp = datetime.now().isoformat()
     log_entry = {
         "timestamp": timestamp,
@@ -150,7 +135,6 @@ def log_mcp_call(method, params):
     print(f"MCP CALL: {method} - {params}")
 
 def log_mcp_response(method, result):
-    """Log MCP method response"""
     timestamp = datetime.now().isoformat()
     log_entry = {
         "timestamp": timestamp,
@@ -162,11 +146,7 @@ def log_mcp_response(method, result):
     mcp_log.append(log_entry)
     print(f"MCP RESPONSE: {method} - {result[:50]}...")
 
-# === SERVIDOR HTTP PARA ANÁLISIS ===
-
 class AnalysisHandler(BaseHTTPRequestHandler):
-    """HTTP handler para análisis con Wireshark"""
-    
     def do_GET(self):
         parsed_url = urlparse(self.path)
         path = parsed_url.path
@@ -187,7 +167,6 @@ class AnalysisHandler(BaseHTTPRequestHandler):
             self.send_error(404)
     
     def do_POST(self):
-        """Handle JSON-RPC style requests para simular MCP"""
         if self.path == '/mcp':
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
@@ -213,7 +192,6 @@ class AnalysisHandler(BaseHTTPRequestHandler):
                     tool_name = params.get('name')
                     arguments = params.get('arguments', {})
                     
-                    # Usar las funciones de utilidad, no las herramientas MCP
                     if tool_name == 'hex_to_rgb':
                         result = {"content": [{"text": convert_hex_to_rgb(arguments.get('hex_color', ''))}]}
                     elif tool_name == 'rgb_to_hex':
@@ -301,7 +279,7 @@ class AnalysisHandler(BaseHTTPRequestHandler):
         """Send MCP logs"""
         self.send_json_response({
             "mcp_calls": len(mcp_log),
-            "logs": mcp_log[-50:],  # Last 50 logs
+            "logs": mcp_log[-50:],  
             "info": "These logs show real MCP calls from your chatbot"
         })
     
@@ -327,17 +305,13 @@ def main():
     print("Starting Hybrid Color MCP Server...")
     print("Mode: MCP (stdio) + HTTP (analysis)")
     
-    # Determinar modo según entorno
     if os.environ.get('PORT'):
-        # En Render - solo HTTP 
         print("Cloud mode: HTTP only")
         run_http_server()
     else:
-        # Local - solo MCP stdio (sin HTTP para evitar conflictos)
         print("Local mode: MCP stdio only")
         print("Starting MCP stdio server...")
         
-        # Solo MCP server, sin HTTP thread
         mcp.run()
 
 if __name__ == "__main__":
