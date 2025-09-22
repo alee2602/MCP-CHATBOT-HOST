@@ -3,6 +3,6 @@ services:
     name: mcp-color-server
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python color-mcp/test_server.py
+    startCommand: python color-mcp/color_server.py
     plan: free
     autoDeploy: true

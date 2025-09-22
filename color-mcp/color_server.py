@@ -1,64 +1,83 @@
-
-import random
-import colorsys
+import asyncio
+import json
 import os
+import sys
+import threading
+import time
+from datetime import datetime
+from http.server import HTTPServer, BaseHTTPRequestHandler
+from urllib.parse import urlparse, parse_qs
+
+# Importar MCP
 from fastmcp import FastMCP
 
+# Crear servidor MCP
 mcp = FastMCP("ColorTools")
+
+# === HERRAMIENTAS MCP ORIGINALES ===
 
 @mcp.tool()
 def hex_to_rgb(hex_color: str) -> str:
     """Convert HEX color to RGB values"""
+    log_mcp_call("hex_to_rgb", {"hex_color": hex_color})
     try:
-        # Remove # if present
         hex_color = hex_color.lstrip('#')
-        
-        # Validate hex color
         if len(hex_color) != 6:
             return "Error: HEX color must be 6 characters long (e.g., #FF0000 or FF0000)"
         
-        # Convert to RGB
         rgb = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
-        
-        return f"HEX #{hex_color.upper()} = RGB({rgb[0]}, {rgb[1]}, {rgb[2]})"
-    
+        result = f"HEX #{hex_color.upper()} = RGB({rgb[0]}, {rgb[1]}, {rgb[2]})"
+        log_mcp_response("hex_to_rgb", result)
+        return result
     except ValueError:
-        return "Error: Invalid HEX color format. Use format like #FF0000 or FF0000"
+        error = "Error: Invalid HEX color format. Use format like #FF0000 or FF0000"
+        log_mcp_response("hex_to_rgb", error)
+        return error
 
 @mcp.tool()
 def rgb_to_hex(r: int, g: int, b: int) -> str:
     """Convert RGB values to HEX color"""
+    log_mcp_call("rgb_to_hex", {"r": r, "g": g, "b": b})
     try:
-        # Validate RGB values
         if not all(0 <= val <= 255 for val in [r, g, b]):
-            return "Error: RGB values must be between 0 and 255"
+            error = "Error: RGB values must be between 0 and 255"
+            log_mcp_response("rgb_to_hex", error)
+            return error
         
         hex_color = f"#{r:02X}{g:02X}{b:02X}"
-        
-        return f"RGB({r}, {g}, {b}) = HEX {hex_color}"
-    
+        result = f"RGB({r}, {g}, {b}) = HEX {hex_color}"
+        log_mcp_response("rgb_to_hex", result)
+        return result
     except Exception as e:
-        return f"Error: {str(e)}"
+        error = f"Error: {str(e)}"
+        log_mcp_response("rgb_to_hex", error)
+        return error
 
 @mcp.tool()
 def random_color() -> str:
     """Generate a random color in both HEX and RGB formats"""
+    log_mcp_call("random_color", {})
+    import random
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     
     hex_color = f"#{r:02X}{g:02X}{b:02X}"
-    
-    return f"Random Color: HEX {hex_color} | RGB({r}, {g}, {b})"
+    result = f"Random Color: HEX {hex_color} | RGB({r}, {g}, {b})"
+    log_mcp_response("random_color", result)
+    return result
 
 @mcp.tool()
 def color_palette(base_color: str, palette_type: str = "complementary") -> str:
     """Generate color palette based on a base color"""
+    log_mcp_call("color_palette", {"base_color": base_color, "palette_type": palette_type})
     try:
-        # Parse base color (assuming HEX)
+        import colorsys
         base_color = base_color.lstrip('#')
         if len(base_color) != 6:
-            return "Error: Base color must be in HEX format (e.g., #FF0000)"
+            error = "Error: Base color must be in HEX format (e.g., #FF0000)"
+            log_mcp_response("color_palette", error)
+            return error
         
         # Convert to RGB then HSV
         rgb = tuple(int(base_color[i:i+2], 16) for i in (0, 2, 4))
@@ -68,7 +87,6 @@ def color_palette(base_color: str, palette_type: str = "complementary") -> str:
         colors = [f"#{base_color.upper()} (base)"]
         
         if palette_type == "complementary":
-            # Complementary color (opposite on color wheel)
             comp_h = (h + 0.5) % 1.0
             comp_rgb = colorsys.hsv_to_rgb(comp_h, s, v)
             comp_rgb = tuple(int(x * 255) for x in comp_rgb)
@@ -88,125 +106,198 @@ def color_palette(base_color: str, palette_type: str = "complementary") -> str:
                 ana_rgb = tuple(int(x * 255) for x in ana_rgb)
                 colors.append(f"#{ana_rgb[0]:02X}{ana_rgb[1]:02X}{ana_rgb[2]:02X} (analogous)")
         
-        return f"{palette_type.capitalize()} Palette:\n" + "\n".join(colors)
-    
+        result = f"{palette_type.capitalize()} Palette:\n" + "\n".join(colors)
+        log_mcp_response("color_palette", result)
+        return result
     except Exception as e:
-        return f"Error: {str(e)}"
+        error = f"Error: {str(e)}"
+        log_mcp_response("color_palette", error)
+        return error
 
-@mcp.tool()
-def color_contrast(color1: str, color2: str) -> str:
-    """Calculate contrast ratio between two colors"""
-    try:
-        def hex_to_luminance(hex_color):
-            hex_color = hex_color.lstrip('#')
-            rgb = [int(hex_color[i:i+2], 16) / 255.0 for i in (0, 2, 4)]
-            
-            # Convert to linear RGB
-            rgb = [x/12.92 if x <= 0.03928 else ((x + 0.055)/1.055)**2.4 for x in rgb]
-            
-            # Calculate luminance
-            return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]
+# === LOGGING PARA ANÁLISIS ===
+
+mcp_log = []
+
+def log_mcp_call(method, params):
+    """Log MCP method call"""
+    timestamp = datetime.now().isoformat()
+    log_entry = {
+        "timestamp": timestamp,
+        "type": "request",
+        "method": method,
+        "params": params,
+        "protocol": "MCP-JSON-RPC"
+    }
+    mcp_log.append(log_entry)
+    print(f"📞 MCP CALL: {method} - {params}")
+
+def log_mcp_response(method, result):
+    """Log MCP method response"""
+    timestamp = datetime.now().isoformat()
+    log_entry = {
+        "timestamp": timestamp,
+        "type": "response", 
+        "method": method,
+        "result": result,
+        "protocol": "MCP-JSON-RPC"
+    }
+    mcp_log.append(log_entry)
+    print(f"✅ MCP RESPONSE: {method} - {result[:50]}...")
+
+# === SERVIDOR HTTP PARA ANÁLISIS ===
+
+class AnalysisHandler(BaseHTTPRequestHandler):
+    """HTTP handler para análisis con Wireshark"""
+    
+    def do_GET(self):
+        parsed_url = urlparse(self.path)
+        path = parsed_url.path
         
-        lum1 = hex_to_luminance(color1)
-        lum2 = hex_to_luminance(color2)
-        
-        # Calculate contrast ratio
-        lighter = max(lum1, lum2)
-        darker = min(lum1, lum2)
-        contrast = (lighter + 0.05) / (darker + 0.05)
-        
-        # Determine accessibility level
-        if contrast >= 7:
-            level = "AAA (excellent)"
-        elif contrast >= 4.5:
-            level = "AA (good)"
-        elif contrast >= 3:
-            level = "AA Large Text (acceptable)"
+        if path == '/':
+            self.send_dashboard()
+        elif path == '/logs':
+            self.send_logs()
+        elif path == '/api/hex-to-rgb':
+            params = parse_qs(parsed_url.query)
+            hex_color = params.get('hex', [''])[0]
+            result = hex_to_rgb(hex_color)
+            self.send_json_response({"result": result, "method": "hex_to_rgb"})
+        elif path == '/api/random-color':
+            result = random_color()
+            self.send_json_response({"result": result, "method": "random_color"})
         else:
-            level = "Failed (poor contrast)"
-        
-        return f"Contrast between {color1.upper()} and {color2.upper()}:\nRatio: {contrast:.2f}:1\nAccessibility: {level}"
+            self.send_error(404)
     
-    except Exception as e:
-        return f"Error: {str(e)}"
+    def do_POST(self):
+        """Handle JSON-RPC style requests para simular MCP"""
+        if self.path == '/mcp':
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+            
+            try:
+                request_data = json.loads(post_data.decode('utf-8'))
+                method = request_data.get('method')
+                params = request_data.get('params', {})
+                request_id = request_data.get('id', 1)
+                
+                # Simular llamada MCP
+                if method == 'hex_to_rgb':
+                    result = hex_to_rgb(params.get('hex_color', ''))
+                elif method == 'rgb_to_hex':
+                    result = rgb_to_hex(params.get('r', 0), params.get('g', 0), params.get('b', 0))
+                elif method == 'random_color':
+                    result = random_color()
+                else:
+                    result = f"Unknown method: {method}"
+                
+                response = {
+                    "jsonrpc": "2.0",
+                    "id": request_id,
+                    "result": result
+                }
+                
+                self.send_json_response(response)
+                
+            except Exception as e:
+                error_response = {
+                    "jsonrpc": "2.0", 
+                    "id": 1,
+                    "error": {"code": -1, "message": str(e)}
+                }
+                self.send_json_response(error_response)
+    
+    def send_dashboard(self):
+        """Send HTML dashboard"""
+        html = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Color MCP Server - Analysis Dashboard</title>
+            <style>
+                body {{ font-family: Arial, sans-serif; margin: 40px; }}
+                .endpoint {{ background: #f5f5f5; padding: 10px; margin: 10px 0; border-radius: 5px; }}
+                .log {{ background: #e8f4f8; padding: 5px; margin: 5px 0; font-family: monospace; }}
+            </style>
+        </head>
+        <body>
+            <h1>🌈 Color MCP Server</h1>
+            <p><strong>Status:</strong> Running (Hybrid Mode)</p>
+            <p><strong>MCP Calls Logged:</strong> {len(mcp_log)}</p>
+            
+            <h2>📡 HTTP Endpoints (para análisis Wireshark):</h2>
+            <div class="endpoint">
+                <strong>GET /api/hex-to-rgb?hex=FF0000</strong><br>
+                Convierte HEX a RGB
+            </div>
+            <div class="endpoint">
+                <strong>GET /api/random-color</strong><br>
+                Genera color aleatorio
+            </div>
+            <div class="endpoint">
+                <strong>POST /mcp</strong><br>
+                Endpoint JSON-RPC que simula protocolo MCP
+            </div>
+            
+            <h2>📊 <a href="/logs">Ver Logs de MCP</a></h2>
+            
+            <h3>💡 Para Wireshark:</h3>
+            <p>1. Captura tráfico en puerto HTTP<br>
+            2. Filtra por: <code>http and tcp.port == {os.environ.get('PORT', '8000')}</code><br>
+            3. Analiza requests POST a /mcp para ver JSON-RPC</p>
+        </body>
+        </html>
+        """
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(html.encode())
+    
+    def send_logs(self):
+        """Send MCP logs"""
+        self.send_json_response({
+            "mcp_calls": len(mcp_log),
+            "logs": mcp_log[-50:],  # Last 50 logs
+            "info": "Estos logs muestran las llamadas MCP reales desde tu chatbot"
+        })
+    
+    def send_json_response(self, data):
+        """Send JSON response"""
+        self.send_response(200)
+        self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+        self.wfile.write(json.dumps(data, indent=2).encode())
 
-@mcp.tool()
-def color_info(hex_color: str) -> str:
-    """Get detailed information about a color"""
-    try:
-        hex_color = hex_color.lstrip('#')
-        if len(hex_color) != 6:
-            return "Error: Color must be in HEX format (e.g., #FF0000)"
-        
-        # Convert to RGB
-        rgb = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
-        r, g, b = [x/255.0 for x in rgb]
-        
-        # Convert to HSV
-        h, s, v = colorsys.rgb_to_hsv(r, g, b)
-        
-        # Convert to HSL
-        h_hsl, l, s_hsl = colorsys.rgb_to_hls(r, g, b)
-        
-        # Determine color family
-        hue_deg = h * 360
-        if hue_deg < 15 or hue_deg >= 345:
-            color_family = "Red"
-        elif hue_deg < 45:
-            color_family = "Orange"
-        elif hue_deg < 75:
-            color_family = "Yellow"
-        elif hue_deg < 165:
-            color_family = "Green"
-        elif hue_deg < 255:
-            color_family = "Blue"
-        elif hue_deg < 285:
-            color_family = "Purple"
-        else:
-            color_family = "Pink"
-        
-        return f"""Color Information for #{hex_color.upper()}:
-RGB: ({rgb[0]}, {rgb[1]}, {rgb[2]})
-HSV: ({hue_deg:.0f}°, {s*100:.0f}%, {v*100:.0f}%)
-HSL: ({h_hsl*360:.0f}°, {s_hsl*100:.0f}%, {l*100:.0f}%)
-Color Family: {color_family}
-Brightness: {(0.299*rgb[0] + 0.587*rgb[1] + 0.114*rgb[2]):.0f}/255"""
-    
-    except Exception as e:
-        return f"Error: {str(e)}"
+def run_http_server():
+    """Run HTTP server in background thread"""
+    port = int(os.environ.get('PORT', 8000))
+    server = HTTPServer(('0.0.0.0', port), AnalysisHandler)
+    print(f"🔗 HTTP Analysis Server running on http://0.0.0.0:{port}")
+    print(f"📊 Dashboard: http://localhost:{port}")
+    print(f"🔍 Wireshark analysis ready!")
+    server.serve_forever()
 
-@mcp.tool()
-def color_mixer(color1: str, color2: str, ratio: float = 0.5) -> str:
-    """Mix two colors together with specified ratio"""
-    try:
-        if not 0 <= ratio <= 1:
-            return "Error: Ratio must be between 0 and 1 (0 = 100% color1, 1 = 100% color2)"
-        
-        # Parse colors
-        color1 = color1.lstrip('#')
-        color2 = color2.lstrip('#')
-        
-        if len(color1) != 6 or len(color2) != 6:
-            return "Error: Both colors must be in HEX format (e.g., #FF0000)"
-        
-        # Convert to RGB
-        rgb1 = tuple(int(color1[i:i+2], 16) for i in (0, 2, 4))
-        rgb2 = tuple(int(color2[i:i+2], 16) for i in (0, 2, 4))
-        
-        # Mix colors
-        mixed_rgb = tuple(int(rgb1[i] * (1 - ratio) + rgb2[i] * ratio) for i in range(3))
-        mixed_hex = f"#{mixed_rgb[0]:02X}{mixed_rgb[1]:02X}{mixed_rgb[2]:02X}"
-        
-        percentage1 = int((1 - ratio) * 100)
-        percentage2 = int(ratio * 100)
-        
-        return f"Mixed Color: #{color1.upper()} ({percentage1}%) + #{color2.upper()} ({percentage2}%) = {mixed_hex}"
+def main():
+    """Main function - Hybrid mode"""
+    print("🚀 Starting Hybrid Color MCP Server...")
+    print("📡 Mode: MCP (stdio) + HTTP (analysis)")
     
-    except Exception as e:
-        return f"Error: {str(e)}"
+    # Determinar modo según entorno
+    if os.environ.get('PORT'):
+        # En Render - solo HTTP 
+        print("☁️  Cloud mode: HTTP only")
+        run_http_server()
+    else:
+        # Local - MCP stdio + HTTP en thread
+        print("💻 Local mode: MCP stdio + HTTP thread")
+        
+        # Iniciar HTTP server en thread separado
+        http_thread = threading.Thread(target=run_http_server, daemon=True)
+        http_thread.start()
+        
+        # Ejecutar MCP server en thread principal
+        print("🔧 Starting MCP stdio server...")
+        mcp.run()
 
 if __name__ == "__main__":
-    if os.getenv("RENDER"):
-        mcp.run()
-    else:
-        mcp.run()
+    main()
