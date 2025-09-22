@@ -14,11 +14,10 @@ from fastmcp import FastMCP
 # Crear servidor MCP
 mcp = FastMCP("ColorTools")
 
-# === HERRAMIENTAS MCP ORIGINALES ===
+# === FUNCIONES DE UTILIDAD (NO MCP) ===
 
-@mcp.tool()
-def hex_to_rgb(hex_color: str) -> str:
-    """Convert HEX color to RGB values"""
+def convert_hex_to_rgb(hex_color: str) -> str:
+    """Convert HEX color to RGB values - Utility function"""
     log_mcp_call("hex_to_rgb", {"hex_color": hex_color})
     try:
         hex_color = hex_color.lstrip('#')
@@ -34,9 +33,8 @@ def hex_to_rgb(hex_color: str) -> str:
         log_mcp_response("hex_to_rgb", error)
         return error
 
-@mcp.tool()
-def rgb_to_hex(r: int, g: int, b: int) -> str:
-    """Convert RGB values to HEX color"""
+def convert_rgb_to_hex(r: int, g: int, b: int) -> str:
+    """Convert RGB values to HEX color - Utility function"""
     log_mcp_call("rgb_to_hex", {"r": r, "g": g, "b": b})
     try:
         if not all(0 <= val <= 255 for val in [r, g, b]):
@@ -53,9 +51,8 @@ def rgb_to_hex(r: int, g: int, b: int) -> str:
         log_mcp_response("rgb_to_hex", error)
         return error
 
-@mcp.tool()
-def random_color() -> str:
-    """Generate a random color in both HEX and RGB formats"""
+def generate_random_color() -> str:
+    """Generate a random color - Utility function"""
     log_mcp_call("random_color", {})
     import random
     r = random.randint(0, 255)
@@ -67,9 +64,8 @@ def random_color() -> str:
     log_mcp_response("random_color", result)
     return result
 
-@mcp.tool()
-def color_palette(base_color: str, palette_type: str = "complementary") -> str:
-    """Generate color palette based on a base color"""
+def generate_color_palette(base_color: str, palette_type: str = "complementary") -> str:
+    """Generate color palette - Utility function"""
     log_mcp_call("color_palette", {"base_color": base_color, "palette_type": palette_type})
     try:
         import colorsys
@@ -104,7 +100,7 @@ def color_palette(base_color: str, palette_type: str = "complementary") -> str:
                 ana_h = (h + offset) % 1.0
                 ana_rgb = colorsys.hsv_to_rgb(ana_h, s, v)
                 ana_rgb = tuple(int(x * 255) for x in ana_rgb)
-                colors.append(f"#{ana_rgb[0]:02X}{ana_rgb[1]:02X}{ana_rgb[2]:02X} (analogous)")
+                colors.append(f"#{ana_h[0]:02X}{ana_rgb[1]:02X}{ana_rgb[2]:02X} (analogous)")
         
         result = f"{palette_type.capitalize()} Palette:\n" + "\n".join(colors)
         log_mcp_response("color_palette", result)
@@ -113,6 +109,28 @@ def color_palette(base_color: str, palette_type: str = "complementary") -> str:
         error = f"Error: {str(e)}"
         log_mcp_response("color_palette", error)
         return error
+
+# === HERRAMIENTAS MCP (WRAPPERS) ===
+
+@mcp.tool()
+def hex_to_rgb(hex_color: str) -> str:
+    """Convert HEX color to RGB values"""
+    return convert_hex_to_rgb(hex_color)
+
+@mcp.tool()
+def rgb_to_hex(r: int, g: int, b: int) -> str:
+    """Convert RGB values to HEX color"""
+    return convert_rgb_to_hex(r, g, b)
+
+@mcp.tool()
+def random_color() -> str:
+    """Generate a random color in both HEX and RGB formats"""
+    return generate_random_color()
+
+@mcp.tool()
+def color_palette(base_color: str, palette_type: str = "complementary") -> str:
+    """Generate color palette based on a base color"""
+    return generate_color_palette(base_color, palette_type)
 
 # === LOGGING PARA ANÁLISIS ===
 
@@ -160,10 +178,10 @@ class AnalysisHandler(BaseHTTPRequestHandler):
         elif path == '/api/hex-to-rgb':
             params = parse_qs(parsed_url.query)
             hex_color = params.get('hex', [''])[0]
-            result = hex_to_rgb(hex_color)
+            result = convert_hex_to_rgb(hex_color)
             self.send_json_response({"result": result, "method": "hex_to_rgb"})
         elif path == '/api/random-color':
-            result = random_color()
+            result = generate_random_color()
             self.send_json_response({"result": result, "method": "random_color"})
         else:
             self.send_error(404)
@@ -195,24 +213,25 @@ class AnalysisHandler(BaseHTTPRequestHandler):
                     tool_name = params.get('name')
                     arguments = params.get('arguments', {})
                     
+                    # Usar las funciones de utilidad, no las herramientas MCP
                     if tool_name == 'hex_to_rgb':
-                        result = {"content": [{"text": hex_to_rgb(arguments.get('hex_color', ''))}]}
+                        result = {"content": [{"text": convert_hex_to_rgb(arguments.get('hex_color', ''))}]}
                     elif tool_name == 'rgb_to_hex':
-                        result = {"content": [{"text": rgb_to_hex(arguments.get('r', 0), arguments.get('g', 0), arguments.get('b', 0))}]}
+                        result = {"content": [{"text": convert_rgb_to_hex(arguments.get('r', 0), arguments.get('g', 0), arguments.get('b', 0))}]}
                     elif tool_name == 'random_color':
-                        result = {"content": [{"text": random_color()}]}
+                        result = {"content": [{"text": generate_random_color()}]}
                     elif tool_name == 'color_palette':
-                        result = {"content": [{"text": color_palette(arguments.get('base_color', 'FF0000'), arguments.get('palette_type', 'complementary'))}]}
+                        result = {"content": [{"text": generate_color_palette(arguments.get('base_color', 'FF0000'), arguments.get('palette_type', 'complementary'))}]}
                     else:
                         result = {"content": [{"text": f"Unknown tool: {tool_name}"}]}
                 
                 # Llamadas directas (legacy)
                 elif method == 'hex_to_rgb':
-                    result = hex_to_rgb(params.get('hex_color', ''))
+                    result = convert_hex_to_rgb(params.get('hex_color', ''))
                 elif method == 'rgb_to_hex':
-                    result = rgb_to_hex(params.get('r', 0), params.get('g', 0), params.get('b', 0))
+                    result = convert_rgb_to_hex(params.get('r', 0), params.get('g', 0), params.get('b', 0))
                 elif method == 'random_color':
-                    result = random_color()
+                    result = generate_random_color()
                 else:
                     result = f"Unknown method: {method}"
                 
@@ -308,13 +327,17 @@ def main():
     print("Starting Hybrid Color MCP Server...")
     print("Mode: MCP (stdio) + HTTP (analysis)")
     
+    # Determinar modo según entorno
     if os.environ.get('PORT'):
+        # En Render - solo HTTP 
         print("Cloud mode: HTTP only")
         run_http_server()
     else:
+        # Local - solo MCP stdio (sin HTTP para evitar conflictos)
         print("Local mode: MCP stdio only")
         print("Starting MCP stdio server...")
         
+        # Solo MCP server, sin HTTP thread
         mcp.run()
 
 if __name__ == "__main__":
