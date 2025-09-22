@@ -27,3 +27,9 @@ kitchen:
   cmd: ["node", "mcp-server.js"]
   cwd: "externalservers"
   config_module: "configs/kitchen_tools.py"
+
+colors:
+  type: stdio
+  cmd: ["node", "color_server.js"]
+  cwd: "color-mcp-worker"
+  config_module: "configs/color_tools.py"

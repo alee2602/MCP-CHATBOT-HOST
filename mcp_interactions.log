@@ -183,3 +183,21 @@
 2025-09-08 10:11:02,464 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
 2025-09-08 10:11:04,278 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
 2025-09-08 10:11:04,978 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-21 18:34:13,152 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-21 18:34:13,547 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-21 18:34:14,846 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-21 18:34:16,331 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-21 18:34:16,350 - MCP_Interactions - ERROR - Server [kitchen] (fastmcp): failed: Could not infer a valid transport from: C:\Users\Ale\OneDrive - UVG\Escritorio\Cuarto Año\Semestre2\Redes\MCP-CHATBOT-HOST\color_server.py
+2025-09-21 18:34:46,016 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-21 18:34:46,376 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-21 18:34:47,691 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-21 18:34:49,211 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-21 18:34:49,813 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-21 18:34:49,828 - MCP_Interactions - ERROR - Server [colors] (fastmcp): failed: Could not infer a valid transport from: C:\Users\Ale\OneDrive - UVG\Escritorio\Cuarto Año\Semestre2\Redes\MCP-CHATBOT-HOST\color_server.py
+2025-09-21 18:35:17,544 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-21 18:35:17,899 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-21 18:35:19,166 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-21 18:35:20,661 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-21 18:35:21,284 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-21 18:35:22,811 - MCP_Interactions - INFO - Server [colors] (fastmcp): connected - 7 tools available
+2025-09-21 18:36:58,215 - MCP_Interactions - INFO - [colors] random_color({}) -> SUCCESS
