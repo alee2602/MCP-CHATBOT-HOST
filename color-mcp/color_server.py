@@ -2,7 +2,7 @@
 import random
 import colorsys
 import os
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 
 mcp = FastMCP("ColorTools")
 

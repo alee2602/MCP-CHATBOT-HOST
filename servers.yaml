@@ -29,7 +29,7 @@ kitchen:
   config_module: "configs/kitchen_tools.py"
 
 colors:
-  type: stdio
-  cmd: ["node", "color_server.js"]
-  cwd: "color-mcp-worker"
+  type: fastmcp
+  cmd: ["python", "color_server.py"]
+  cwd: "color-mcp"
   config_module: "configs/color_tools.py"
