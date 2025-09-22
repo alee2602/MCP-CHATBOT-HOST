@@ -2,15 +2,6 @@ services:
   - type: web
     name: color-mcp-server
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python color-mcp/color_server.py
-    rootDir: externalservers
-    plan: free
-    region: oregon
-    branch: main
-    envVars:
-      - key: PYTHONUNBUFFERED
-        value: 1
-      - key: PORT
-        generateValue: true
-    autoDeploy: true
+    buildCommand: pip install -r ../requirements.txt
+    startCommand: python color_server.py
+    rootDir: color-mcp
