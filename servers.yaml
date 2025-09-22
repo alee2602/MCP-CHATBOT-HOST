@@ -29,7 +29,6 @@ kitchen:
   config_module: "configs/kitchen_tools.py"
 
 colors:
-  type: fastmcp
-  cmd: ["python", "color_server.py"]
-  cwd: "color-mcp"
+  type: http
+  url: "https://mcp-color-server.onrender.com/mcp"
   config_module: "configs/color_tools.py"

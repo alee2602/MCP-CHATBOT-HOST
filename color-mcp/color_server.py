@@ -129,7 +129,7 @@ def log_mcp_call(method, params):
         "protocol": "MCP-JSON-RPC"
     }
     mcp_log.append(log_entry)
-    print(f"📞 MCP CALL: {method} - {params}")
+    print(f"MCP CALL: {method} - {params}")
 
 def log_mcp_response(method, result):
     """Log MCP method response"""
@@ -142,7 +142,7 @@ def log_mcp_response(method, result):
         "protocol": "MCP-JSON-RPC"
     }
     mcp_log.append(log_entry)
-    print(f"✅ MCP RESPONSE: {method} - {result[:50]}...")
+    print(f"MCP RESPONSE: {method} - {result[:50]}...")
 
 # === SERVIDOR HTTP PARA ANÁLISIS ===
 
@@ -180,8 +180,34 @@ class AnalysisHandler(BaseHTTPRequestHandler):
                 params = request_data.get('params', {})
                 request_id = request_data.get('id', 1)
                 
-                # Simular llamada MCP
-                if method == 'hex_to_rgb':
+                # Manejar métodos MCP estándar
+                if method == 'tools/list':
+                    result = {
+                        "tools": [
+                            {"name": "hex_to_rgb", "description": "Convert HEX color to RGB values"},
+                            {"name": "rgb_to_hex", "description": "Convert RGB values to HEX color"},
+                            {"name": "random_color", "description": "Generate a random color"},
+                            {"name": "color_palette", "description": "Generate color palette"}
+                        ]
+                    }
+                    
+                elif method == 'tools/call':
+                    tool_name = params.get('name')
+                    arguments = params.get('arguments', {})
+                    
+                    if tool_name == 'hex_to_rgb':
+                        result = {"content": [{"text": hex_to_rgb(arguments.get('hex_color', ''))}]}
+                    elif tool_name == 'rgb_to_hex':
+                        result = {"content": [{"text": rgb_to_hex(arguments.get('r', 0), arguments.get('g', 0), arguments.get('b', 0))}]}
+                    elif tool_name == 'random_color':
+                        result = {"content": [{"text": random_color()}]}
+                    elif tool_name == 'color_palette':
+                        result = {"content": [{"text": color_palette(arguments.get('base_color', 'FF0000'), arguments.get('palette_type', 'complementary'))}]}
+                    else:
+                        result = {"content": [{"text": f"Unknown tool: {tool_name}"}]}
+                
+                # Llamadas directas (legacy)
+                elif method == 'hex_to_rgb':
                     result = hex_to_rgb(params.get('hex_color', ''))
                 elif method == 'rgb_to_hex':
                     result = rgb_to_hex(params.get('r', 0), params.get('g', 0), params.get('b', 0))
@@ -201,7 +227,7 @@ class AnalysisHandler(BaseHTTPRequestHandler):
             except Exception as e:
                 error_response = {
                     "jsonrpc": "2.0", 
-                    "id": 1,
+                    "id": request_data.get('id', 1) if 'request_data' in locals() else 1,
                     "error": {"code": -1, "message": str(e)}
                 }
                 self.send_json_response(error_response)
@@ -220,30 +246,30 @@ class AnalysisHandler(BaseHTTPRequestHandler):
             </style>
         </head>
         <body>
-            <h1>🌈 Color MCP Server</h1>
+            <h1>Color MCP Server</h1>
             <p><strong>Status:</strong> Running (Hybrid Mode)</p>
             <p><strong>MCP Calls Logged:</strong> {len(mcp_log)}</p>
             
-            <h2>📡 HTTP Endpoints (para análisis Wireshark):</h2>
+            <h2>HTTP Endpoints (for Wireshark analysis):</h2>
             <div class="endpoint">
                 <strong>GET /api/hex-to-rgb?hex=FF0000</strong><br>
-                Convierte HEX a RGB
+                Convert HEX to RGB
             </div>
             <div class="endpoint">
                 <strong>GET /api/random-color</strong><br>
-                Genera color aleatorio
+                Generate random color
             </div>
             <div class="endpoint">
                 <strong>POST /mcp</strong><br>
-                Endpoint JSON-RPC que simula protocolo MCP
+                JSON-RPC endpoint that simulates MCP protocol
             </div>
             
-            <h2>📊 <a href="/logs">Ver Logs de MCP</a></h2>
+            <h2><a href="/logs">View MCP Logs</a></h2>
             
-            <h3>💡 Para Wireshark:</h3>
-            <p>1. Captura tráfico en puerto HTTP<br>
-            2. Filtra por: <code>http and tcp.port == {os.environ.get('PORT', '8000')}</code><br>
-            3. Analiza requests POST a /mcp para ver JSON-RPC</p>
+            <h3>For Wireshark:</h3>
+            <p>1. Capture HTTP traffic<br>
+            2. Filter by: <code>http and tcp.port == {os.environ.get('PORT', '8000')}</code><br>
+            3. Analyze POST requests to /mcp to see JSON-RPC messages</p>
         </body>
         </html>
         """
@@ -257,7 +283,7 @@ class AnalysisHandler(BaseHTTPRequestHandler):
         self.send_json_response({
             "mcp_calls": len(mcp_log),
             "logs": mcp_log[-50:],  # Last 50 logs
-            "info": "Estos logs muestran las llamadas MCP reales desde tu chatbot"
+            "info": "These logs show real MCP calls from your chatbot"
         })
     
     def send_json_response(self, data):
@@ -272,31 +298,23 @@ def run_http_server():
     """Run HTTP server in background thread"""
     port = int(os.environ.get('PORT', 8000))
     server = HTTPServer(('0.0.0.0', port), AnalysisHandler)
-    print(f"🔗 HTTP Analysis Server running on http://0.0.0.0:{port}")
-    print(f"📊 Dashboard: http://localhost:{port}")
-    print(f"🔍 Wireshark analysis ready!")
+    print(f"HTTP Analysis Server running on http://0.0.0.0:{port}")
+    print(f"Dashboard: http://localhost:{port}")
+    print(f"Wireshark analysis ready!")
     server.serve_forever()
 
 def main():
     """Main function - Hybrid mode"""
-    print("🚀 Starting Hybrid Color MCP Server...")
-    print("📡 Mode: MCP (stdio) + HTTP (analysis)")
+    print("Starting Hybrid Color MCP Server...")
+    print("Mode: MCP (stdio) + HTTP (analysis)")
     
-    # Determinar modo según entorno
     if os.environ.get('PORT'):
-        # En Render - solo HTTP 
-        print("☁️  Cloud mode: HTTP only")
+        print("Cloud mode: HTTP only")
         run_http_server()
     else:
-        # Local - MCP stdio + HTTP en thread
-        print("💻 Local mode: MCP stdio + HTTP thread")
+        print("Local mode: MCP stdio only")
+        print("Starting MCP stdio server...")
         
-        # Iniciar HTTP server en thread separado
-        http_thread = threading.Thread(target=run_http_server, daemon=True)
-        http_thread.start()
-        
-        # Ejecutar MCP server en thread principal
-        print("🔧 Starting MCP stdio server...")
         mcp.run()
 
 if __name__ == "__main__":
