@@ -2,6 +2,7 @@ services:
   - type: web
     name: color-mcp-server
     env: python
-    buildCommand: pip install -r ../requirements.txt
-    startCommand: python color_server.py
-    rootDir: color-mcp
+    buildCommand: pip install -r requirements.txt
+    startCommand: python color-mcp/color_server.py
+    plan: free
+    autoDeploy: true
