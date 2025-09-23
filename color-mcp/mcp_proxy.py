@@ -7,19 +7,19 @@ REMOTE_SERVER = "https://mcp-color-server.onrender.com/mcp"
 class ProxyHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         if self.path == '/mcp':
-            # Leer request del chatbot
+            # Read requests from chatbot
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
             
-            print(f"[WIRESHARK] Request from chatbot: {post_data.decode('utf-8')}")
+            print(f"Request from chatbot: {post_data.decode('utf-8')}")
             
             try:
-                # Reenviar al servidor remoto
+                # Forward to remote server
                 response = requests.post(REMOTE_SERVER, data=post_data, headers={'Content-Type': 'application/json'})
                 
-                print(f"[WIRESHARK] Response from remote: {response.text}")
+                print(f"Response from remote: {response.text}")
                 
-                # Devolver respuesta al chatbot
+                # Get response from server
                 self.send_response(response.status_code)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()

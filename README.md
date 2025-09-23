@@ -198,7 +198,7 @@ You can check the following server here:
 You can check the following server here:
 [**Kitchen MCP Server**](https://github.com/paulabaal12/kitchen-mcp)
 
-Each of these servers demonstrates how MCP can modularize functionality—instead of hardcoding everything into the chatbot, features are exposed as independent services.
+Each of these servers demonstrates how MCP can modularize functionality, instead of hardcoding everything into the chatbot, features are exposed as independent services.
 
 ## **Examples**
 
