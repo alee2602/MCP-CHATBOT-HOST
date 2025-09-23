@@ -30,5 +30,5 @@ kitchen:
 
 colors:
   type: http
-  url: "http://localhost:8080/mcp"
+  url: "https://mcp-color-server.onrender.com/mcp"
   config_module: "configs/color_tools.py"

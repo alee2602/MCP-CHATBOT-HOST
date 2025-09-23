@@ -177,7 +177,7 @@ class AnalysisHandler(BaseHTTPRequestHandler):
                 params = request_data.get('params', {})
                 request_id = request_data.get('id', 1)
                 
-                # Manejar métodos MCP estándar
+                # Manage standard MCP 
                 if method == 'tools/list':
                     result = {
                         "tools": [
@@ -203,7 +203,7 @@ class AnalysisHandler(BaseHTTPRequestHandler):
                     else:
                         result = {"content": [{"text": f"Unknown tool: {tool_name}"}]}
                 
-                # Llamadas directas (legacy)
+                # direct calls (legacy)
                 elif method == 'hex_to_rgb':
                     result = convert_hex_to_rgb(params.get('hex_color', ''))
                 elif method == 'rgb_to_hex':
@@ -265,7 +265,7 @@ class AnalysisHandler(BaseHTTPRequestHandler):
             
             <h3>For Wireshark:</h3>
             <p>1. Capture HTTP traffic<br>
-            2. Filter by: <code>http and tcp.port == {os.environ.get('PORT', '8000')}</code><br>
+            2. Filter by: <code>http and tcp.port == 8080 </code><br>
             3. Analyze POST requests to /mcp to see JSON-RPC messages</p>
         </body>
         </html>
