@@ -316,3 +316,152 @@
 2025-09-22 01:45:30,902 - MCP_Interactions - INFO - [colors] color_palette({'base_color': '#0000FF'}) -> SUCCESS
 2025-09-22 01:45:44,870 - MCP_Interactions - INFO - [colors] color_palette({'base_color': 'FF0000'}) -> SUCCESS
 2025-09-22 01:46:08,191 - MCP_Interactions - INFO - [colors] hex_to_rgb({'hex_color': 'FF0000'}) -> SUCCESS
+2025-09-22 12:06:42,557 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:06:43,198 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:06:44,914 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:06:46,698 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:06:47,457 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:06:51,595 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000186ACD63970>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:07:56,180 - MCP_Interactions - ERROR - [git] git_branch({'create': True, 'name': 'feature/test-readme'}) -> ERROR: Server error: {'code': -32602, 'message': 'MCP error -32602: Invalid arguments for tool git_branch: [\n  {\n    "expected": "\'list\' | \'create\' | \'delete\' | \'rename\' | \'show-current\'",\n    "received": "undefined",\n    "code": "invalid_type",\n    "path": [\n      "mode"\n    ],\n    "message": "Required"\n  }\n]'}
+2025-09-22 12:09:45,397 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:09:45,771 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:09:47,560 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:09:49,255 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:09:49,882 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:09:53,966 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A555D62320>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:10:39,621 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:10:39,974 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:10:41,380 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:10:43,020 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:10:43,680 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:10:47,747 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F8DEA625C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:10:58,778 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:10:59,121 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:11:00,487 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:11:02,173 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:11:02,840 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:11:06,941 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024818261540>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:11:28,696 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'name': 'feature/test-readme'}) -> SUCCESS
+2025-09-22 12:11:54,692 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'name': 'feature/test-readme'}) -> SUCCESS
+2025-09-22 12:14:13,486 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:14:13,867 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:14:15,260 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:14:16,941 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:14:17,569 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:14:21,688 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020CD5763BE0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:14:32,151 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'name': 'feature/test-readme'}) -> SUCCESS
+2025-09-22 12:15:09,115 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'name': 'feature/test-readme'}) -> SUCCESS
+2025-09-22 12:16:26,180 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:16:26,618 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:16:28,172 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:16:29,905 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:16:30,569 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:16:34,650 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000014A95661510>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:16:43,457 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'name': 'undefined'}) -> SUCCESS
+2025-09-22 12:17:38,032 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'name': 'test-readme'}) -> SUCCESS
+2025-09-22 12:17:49,968 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'name': 'undefined'}) -> SUCCESS
+2025-09-22 12:18:29,018 - MCP_Interactions - INFO - [git] git_branch({'mode': 'list', 'name': 'test'}) -> SUCCESS
+2025-09-22 12:19:15,874 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'name': 'test'}) -> SUCCESS
+2025-09-22 12:19:30,078 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'name': 'undefined'}) -> SUCCESS
+2025-09-22 12:19:43,605 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'name': 'test'}) -> SUCCESS
+2025-09-22 12:19:57,324 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'name': 'undefined'}) -> SUCCESS
+2025-09-22 12:20:07,000 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'name': 'feature/test-readme'}) -> SUCCESS
+2025-09-22 12:26:31,510 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:26:31,884 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:26:33,238 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:26:35,054 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:26:35,720 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:26:39,884 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001BC03E62560>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:26:58,151 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'feature/test-readme'}) -> SUCCESS
+2025-09-22 12:27:08,975 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'undefined'}) -> SUCCESS
+2025-09-22 12:27:23,801 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': '# My Project\n\nThis is a sample project to demonstrate the usage of various tools and services.'}) -> SUCCESS
+2025-09-22 12:28:56,046 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'feature/test-readme', 'startPoint': 'main'}) -> SUCCESS
+2025-09-22 12:31:12,299 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:31:12,716 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:31:14,359 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:31:16,162 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:31:16,876 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:31:20,964 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002AF602625C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:31:33,254 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:31:46,976 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:32:57,715 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:32:58,074 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:32:59,564 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:33:01,325 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:33:01,954 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:33:06,065 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001B8E2D637F0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:33:10,013 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:34:33,366 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:34:43,881 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:35:46,218 - MCP_Interactions - INFO - [filesystem] list_directory({'path': '.'}) -> SUCCESS
+2025-09-22 12:36:42,701 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:36:43,054 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:36:44,325 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:36:46,019 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:36:46,639 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:36:50,739 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023096362530>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:37:00,360 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:39:07,888 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:39:08,247 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:39:09,778 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:39:11,429 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:39:12,064 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:39:16,206 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001985E663BB0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:39:26,353 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:39:40,146 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:41:30,028 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-22 12:41:30,388 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-22 12:41:31,705 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-22 12:41:33,523 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-22 12:41:34,199 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-22 12:41:38,290 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D045D63BE0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-22 12:41:44,689 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:41:58,766 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test-readme', 'path': '.'}) -> SUCCESS
+2025-09-22 12:42:29,391 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-22 12:42:51,205 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-22 12:43:07,596 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test-readme', 'path': '.'}) -> SUCCESS
+2025-09-22 12:43:38,626 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': '# My Project\n\nThis is the README file for my project.'}) -> SUCCESS
+2025-09-22 12:44:27,790 - MCP_Interactions - INFO - [git] git_add({'files': ['README.md']}) -> SUCCESS
+2025-09-23 09:27:42,155 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-23 09:27:42,532 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-23 09:27:44,444 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-23 09:27:46,241 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-23 09:27:46,998 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-23 09:27:51,135 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E44DD63C70>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-23 10:01:08,177 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'feature/test-readme', 'force': True}) -> SUCCESS
+2025-09-23 10:01:41,694 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'feature/test'}) -> SUCCESS
+2025-09-23 10:02:07,277 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test', 'path': '.'}) -> SUCCESS
+2025-09-23 10:02:21,220 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test', 'path': '.'}) -> SUCCESS
+2025-09-23 10:02:46,498 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-23 10:02:54,583 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test', 'path': '.'}) -> SUCCESS
+2025-09-23 10:05:37,927 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-23 10:06:15,046 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-23 10:06:42,560 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': '# Project README'}) -> SUCCESS
+2025-09-23 10:06:57,196 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': '# My Project\n\nThis is a sample project to demonstrate Git functionality within this conversational interface.'}) -> SUCCESS
+2025-09-23 10:08:03,742 - MCP_Interactions - INFO - [git] git_add({'files': ['README.md'], 'path': '.'}) -> SUCCESS
+2025-09-23 10:09:14,063 - MCP_Interactions - INFO - [git] git_commit({'message': 'test: commit test', 'path': '.'}) -> SUCCESS
+2025-09-23 10:10:05,201 - MCP_Interactions - INFO - [git] git_push({'path': '.'}) -> SUCCESS
+2025-09-23 10:10:24,285 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'branch': 'feature/test', 'setUpstream': True}) -> SUCCESS
+2025-09-23 10:23:19,639 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'feature/test', 'force': True}) -> SUCCESS
+2025-09-23 10:24:15,330 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'feature/test'}) -> SUCCESS
+2025-09-23 10:24:55,274 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test', 'path': '/path/to/directory'}) -> SUCCESS
+2025-09-23 10:25:06,338 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '\\path\\to\\directory'}) -> SUCCESS
+2025-09-23 10:25:29,311 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-23 10:25:51,554 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test', 'path': '.'}) -> SUCCESS
+2025-09-23 10:26:10,651 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': 'This is a README file for the feature/test branch.'}) -> SUCCESS
+2025-09-23 10:26:47,611 - MCP_Interactions - INFO - [filesystem] read_file({'path': 'README.md'}) -> SUCCESS
+2025-09-23 10:27:08,286 - MCP_Interactions - INFO - [git] git_add({'files': ['README.md'], 'path': '.'}) -> SUCCESS
+2025-09-23 10:27:42,419 - MCP_Interactions - INFO - [git] git_commit({'amend': True, 'message': 'test: commit test'}) -> SUCCESS
+2025-09-23 10:28:36,929 - MCP_Interactions - INFO - [git] git_push({'path': '.'}) -> SUCCESS
+2025-09-23 10:28:55,349 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'setUpstream': True}) -> SUCCESS
+2025-09-23 10:29:26,260 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'branch': 'feature/test', 'setUpstream': True}) -> SUCCESS
+2025-09-23 10:31:29,813 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'feature/test', 'force': True}) -> SUCCESS
+2025-09-23 10:32:21,334 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-23 10:32:21,733 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-23 10:32:23,304 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-23 10:32:24,870 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-23 10:32:25,647 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-23 10:32:29,842 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /mcp (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A03FF61F30>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-09-23 10:32:57,792 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-23 10:33:09,131 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'feature/test'}) -> SUCCESS
+2025-09-23 10:33:25,752 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test', 'path': '.'}) -> SUCCESS
