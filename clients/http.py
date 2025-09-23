@@ -6,7 +6,7 @@ from .base import BaseMCPClient
 from utils.logger import mcp_logger
 
 class HTTPMCPClient(BaseMCPClient):
-    """Cliente para MCPs sobre HTTP"""
+    """Client for MCPs over HTTP"""
     
     def __init__(self, url: str, tools: Optional[List[str]] = None, config_module: Optional[str] = None, server_name: str = "http"):
         super().__init__(server_name)
@@ -19,7 +19,7 @@ class HTTPMCPClient(BaseMCPClient):
             self._load_tool_config()
     
     def _load_tool_config(self):
-        """Cargar configuración específica de herramientas"""
+        """Load specific tool settings"""
         try:
             spec = importlib.util.spec_from_file_location("tool_config", self.config_module)
             config_module = importlib.util.module_from_spec(spec)
@@ -31,7 +31,7 @@ class HTTPMCPClient(BaseMCPClient):
             print(f"Warning: Could not load tool config: {e}")
     
     async def initialize(self) -> List[str]:
-        """Inicializar y obtener herramientas disponibles"""
+        """Initialize and obtain available tools"""
         try:
             result = await self.call("tools/list")
             if isinstance(result, dict) and "tools" in result:
@@ -59,7 +59,7 @@ class HTTPMCPClient(BaseMCPClient):
         return self._tools
     
     async def call(self, method: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-        """Llamada HTTP JSON-RPC"""
+        """HTTP JSON-RPC call"""
         self._id += 1
         request = {
             "jsonrpc": "2.0",
@@ -77,7 +77,7 @@ class HTTPMCPClient(BaseMCPClient):
         return result.get("result")
     
     async def call_tool(self, tool_name: str, **params) -> str:
-        """Llamar herramienta via HTTP"""
+        """Call tool via HTTP"""
         try:
             result = await self.call("tools/call", {"name": tool_name, "arguments": params})
             
@@ -107,7 +107,7 @@ class HTTPMCPClient(BaseMCPClient):
             raise
     
     def _process_result(self, result) -> str:
-        """Procesar resultado de herramienta HTTP"""
+        """Process HTTP tool result"""
         if isinstance(result, dict) and "content" in result:
             content = result.get("content", [])
             if content and len(content) > 0:

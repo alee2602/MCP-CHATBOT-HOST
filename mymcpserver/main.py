@@ -7,7 +7,7 @@ import os
 mcp = FastMCP("mcp-playlist")
 
 # Initialize playlist engine
-dataset_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "spotify_songs.csv")
+dataset_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data/spotify_songs.csv")
 playlist_engine = PlaylistEngine(dataset_path)
 
 @mcp.tool()

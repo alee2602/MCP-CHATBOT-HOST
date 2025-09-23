@@ -7,13 +7,13 @@ from typing import Dict, List, Any, Tuple
 from clients.fastmcp import FastMCPClient
 from clients.stdio import StdioMCPClient
 from clients.http import HTTPMCPClient
-from clients.simple_api import SimpleAPIClient
+#from clients.simple_api import SimpleAPIClient
 from utils.logger import mcp_logger
 from .config import ANTHROPIC_API_KEY
 
 
 class ModularMCPChatbot:
-    """Chatbot que maneja múltiples servidores MCP"""
+    """Chatbot that manages multiple MCP servers"""
     
     def __init__(self, config_file: str = "servers.yaml"):
         self.conversation_history: List[Tuple[str, str]] = []
@@ -21,7 +21,7 @@ class ModularMCPChatbot:
         self.config_file = config_file
     
     async def load_mcps(self):
-        """Cargar múltiples MCPs desde configuración"""
+        """Load multiple MCPs from configuration"""
         try:
             with open(self.config_file, "r") as f:
                 config = yaml.safe_load(f)
@@ -41,7 +41,6 @@ class ModularMCPChatbot:
             print(f"❌ Error loading MCPs: {e}")
     
     async def _load_single_mcp(self, name: str, settings: Dict[str, Any]):
-        """Cargar un servidor MCP individual"""
         server_type = settings.get("type", "stdio")
         
         try:
@@ -72,7 +71,6 @@ class ModularMCPChatbot:
             print(f"🔴 Failed to connect to {name}: {e}")
     
     async def _create_fastmcp_client(self, name: str, settings: Dict[str, Any]):
-        """Crear cliente FastMCP"""
         cmd = settings["cmd"]
         cwd = settings.get("cwd", ".")
         server_path = os.path.abspath(os.path.join(cwd, cmd[1]))
@@ -81,7 +79,6 @@ class ModularMCPChatbot:
         return FastMCPClient(server_path, config_module, name)
     
     async def _create_stdio_client(self, name: str, settings: Dict[str, Any]):
-        """Crear cliente Stdio"""
         cmd = settings["cmd"]
         cwd = settings.get("cwd", ".")
         config_module = settings.get("config_module")
@@ -89,23 +86,14 @@ class ModularMCPChatbot:
         return StdioMCPClient(cmd, cwd, config_module, name)
     
     async def _create_http_client(self, name: str, settings: Dict[str, Any]):
-        """Crear cliente HTTP"""
         url = settings["url"]
         tools = settings.get("tools", [])
         config_module = settings.get("config_module")
         
         return HTTPMCPClient(url, tools, config_module, name)
     
-    async def _create_api_client(self, name: str, settings: Dict[str, Any]):
-        """Crear cliente API simple"""
-        base_url = settings["base_url"]
-        endpoints = settings["endpoints"]
-        config_module = settings.get("config_module")
-        
-        return SimpleAPIClient(base_url, endpoints, config_module, name)
-    
     def _print_servers_summary(self):
-        """Mostrar resumen de servidores conectados"""
+        """Show summary of connected servers"""
         print("\n📋 CONNECTED SERVERS:")
         for name, info in self.mcps.items():
             client = info["client"]
@@ -114,7 +102,6 @@ class ModularMCPChatbot:
         print()
     
     async def call_mcp_tool(self, server: str, tool: str, params: Dict[str, Any]) -> str:
-        """Llamar herramienta de cualquier tipo de servidor"""
         if server not in self.mcps:
             return f"Unknown server: {server}"
         
@@ -128,7 +115,6 @@ class ModularMCPChatbot:
             return f"Error calling {server}:{tool}: {e}"
     
     def get_anthropic_tools(self) -> List[Dict[str, Any]]:
-        """Obtener todas las herramientas para Anthropic API dinámicamente"""
         tools = []
         
         for server, info in self.mcps.items():
@@ -147,7 +133,6 @@ class ModularMCPChatbot:
         return tools
     
     async def call_anthropic_with_tools(self, message: str) -> str:
-        """Call Anthropic API with dynamic tool calling"""
         if not ANTHROPIC_API_KEY:
             return "Please set ANTHROPIC_API_KEY in .env file"
         
@@ -159,19 +144,19 @@ class ModularMCPChatbot:
                 "content-type": "application/json",
             }
             
-            # Usar configuraciones de ahorro
+            #Use power saving settings
             from .config import DEFAULT_MODEL, MAX_TOKENS, MAX_CONVERSATION_HISTORY, MAX_RESULT_LENGTH
             
             messages = []
-            # Limitar historial según configuración
+            # Limit history according to settings
             for role, content in self.conversation_history[-MAX_CONVERSATION_HISTORY:]:
                 messages.append({"role": role, "content": content})
             messages.append({"role": "user", "content": message})
             
-            # Obtener herramientas dinámicamente
+            # get tools dynamically
             tools = self.get_anthropic_tools()
             
-            # Crear mapping de herramientas a servidores
+            # Create mapping of tools to servers
             tool_server_mapping = {}
             clean_tools = []
             
@@ -193,7 +178,7 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
                 "messages": messages
             }
             
-            # Solo añadir tools si existen
+            # Only add tools if they exist
             if clean_tools:
                 payload["tools"] = clean_tools
                 payload["tool_choice"] = {"type": "auto"}
@@ -205,7 +190,7 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
             
             result = response.json()
             
-            # Procesar respuesta
+            # Process response
             response_text = ""
             tool_results = []
             
@@ -219,12 +204,12 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
                     tool_name = content["name"]
                     tool_input = content["input"]
                     
-                    # Buscar el servidor correcto usando el mapping
+                    # Find the correct server using mapping
                     server = tool_server_mapping.get(tool_name)
                     
                     if server:
                         tool_result = await self.call_mcp_tool(server, tool_name, tool_input)
-                        # Truncar resultado de herramienta para ahorrar tokens
+                        # Truncate tool result to save tokens
                         if len(tool_result) > MAX_RESULT_LENGTH:
                             tool_result = tool_result[:MAX_RESULT_LENGTH] + "..."
                         tool_results.append(f"Tool result: {tool_result}")
@@ -253,7 +238,7 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
         
         await self.load_mcps()
         
-        print("💬 You can chat naturally! The assistant will use appropriate tools automatically.")
+        print("💬 Chat with me! The assistant will use appropriate tools automatically.")
         print("📝 Commands: '/quit' to exit, '/log' for MCP interactions, '/history' for conversation, '/servers' for server info")
         print()
         
@@ -288,20 +273,18 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
             await self.cleanup()
     
     async def cleanup(self):
-        """Limpiar recursos al finalizar"""
-        # Auto-guardar conversación si tiene mensajes
+        # Auto-save conversation if it has messages
         if self.conversation_history:
             self._auto_save_conversation()
         
-        # Cerrar conexiones MCP
-        for name, info in self.mcps.items():
+        # Close MCP Connections
+        for info in self.mcps.items():
             try:
                 await info["client"].close()
             except:
                 pass
     
     def _auto_save_conversation(self):
-        """Auto-guardar conversación en un solo archivo JSON"""
         try:
             import json
             from datetime import datetime
@@ -309,7 +292,7 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
             
             filename = "conversation_history.json"
             
-            # Leer archivo existente si existe
+            # Read file if it exists
             if os.path.exists(filename):
                 try:
                     with open(filename, 'r', encoding='utf-8') as f:
@@ -319,7 +302,7 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
             else:
                 data = {"sessions": []}
             
-            # Agregar nueva sesión solo si hay mensajes
+            # Add new session only if there are messages
             if self.conversation_history:
                 session = {
                     "timestamp": datetime.now().isoformat(),
@@ -327,7 +310,7 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
                 }
                 data["sessions"].append(session)
                 
-                # Guardar archivo actualizado
+                # Save updated file
                 with open(filename, 'w', encoding='utf-8') as f:
                     json.dump(data, f, indent=2, ensure_ascii=False)
                 
@@ -337,7 +320,6 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
             print(f"Failed to save conversation: {e}")
     
     def _print_conversation_history(self):
-        """Mostrar historial de conversación"""
         print("\n" + "="*60)
         print("CONVERSATION HISTORY")
         print("="*60)
@@ -366,15 +348,12 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
         print("="*60)
     
     def get_conversation_history(self) -> List[Tuple[str, str]]:
-        """Obtener historial de conversación"""
         return self.conversation_history.copy()
     
     def clear_conversation_history(self):
-        """Limpiar historial de conversación"""
         self.conversation_history.clear()
     
     def get_server_status(self) -> Dict[str, Any]:
-        """Obtener estado de todos los servidores"""
         status = {}
         for name, info in self.mcps.items():
             client = info["client"]

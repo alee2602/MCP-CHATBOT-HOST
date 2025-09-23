@@ -10,7 +10,7 @@ from .base import BaseMCPClient
 from utils.logger import mcp_logger
 
 class FastMCPClient(BaseMCPClient):
-    """Cliente para FastMCP - carga configuración desde archivo externo"""
+    """Client for FastMCP - loads configuration from external file"""
     
     def __init__(self, server_path: str, config_module: Optional[str] = None, server_name: str = "fastmcp"):
         super().__init__(server_name)
@@ -19,7 +19,7 @@ class FastMCPClient(BaseMCPClient):
         self.tool_configs: Dict[str, Dict[str, str]] = {}
     
     async def initialize(self) -> List[str]:
-        """Inicializar y cargar configuración de herramientas"""
+        """Initialize and load tool settings"""
         try:
             if self.config_module:
                 self._load_tool_config()
@@ -107,7 +107,7 @@ class FastMCPClient(BaseMCPClient):
             raise
     
     def _normalize_result(self, result) -> str:
-        """Normalizar el resultado de una herramienta a string"""
+        """Normalize the result of a tool to a string"""
         if result is None:
             return ""
 

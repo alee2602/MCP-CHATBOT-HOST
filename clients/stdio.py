@@ -14,7 +14,7 @@ from utils.logger import mcp_logger
 
 
 class StdioMCPClient(BaseMCPClient):
-    """Cliente para servidores MCP oficiales que usan stdio"""
+    """Client for official MCP servers using stdio"""
     
     def __init__(self, cmd: List[str], cwd: str = ".", config_module: Optional[str] = None, server_name: str = "stdio"):
         super().__init__(server_name)
@@ -26,12 +26,11 @@ class StdioMCPClient(BaseMCPClient):
         self._next_id = 1
     
     async def initialize(self) -> List[str]:
-        """Inicializar proceso y obtener herramientas"""
+        """Initialize process and obtain tools"""
         try:
             if self.config_module:
                 self._load_tool_config()
             
-            # Iniciar el proceso del servidor MCP
             self.process = await asyncio.create_subprocess_exec(
                 *self.cmd,
                 stdin=asyncio.subprocess.PIPE,
@@ -40,7 +39,7 @@ class StdioMCPClient(BaseMCPClient):
                 cwd=self.cwd
             )
             
-            # Inicializar la conexión
+            # Initialize connection
             await self._send_request("initialize", {
                 "protocolVersion": "2024-11-05",
                 "capabilities": {
@@ -52,7 +51,7 @@ class StdioMCPClient(BaseMCPClient):
                 }
             })
             
-            # Obtener lista de herramientas
+            # Get list of tools
             tools_response = await self._send_request("tools/list", {})
             if tools_response and "tools" in tools_response:
                 self._tools = [tool["name"] for tool in tools_response["tools"]]
@@ -78,7 +77,7 @@ class StdioMCPClient(BaseMCPClient):
             raise
     
     async def _send_request(self, method: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-        """Enviar solicitud JSON-RPC al servidor"""
+        """Send JSON-RPC request to the server"""
         if not self.process:
             raise RuntimeError("Process not initialized")
         
@@ -90,12 +89,12 @@ class StdioMCPClient(BaseMCPClient):
         }
         self._next_id += 1
         
-        # Enviar request
+        # Send request
         request_line = json.dumps(request) + "\n"
         self.process.stdin.write(request_line.encode())
         await self.process.stdin.drain()
         
-        # Leer respuesta
+        # Read response
         try:
             response_line = await asyncio.wait_for(
                 self.process.stdout.readline(), 
@@ -115,9 +114,8 @@ class StdioMCPClient(BaseMCPClient):
             raise RuntimeError("Timeout waiting for server response")
     
     async def call_tool(self, tool_name: str, **params) -> str:
-        """Llamar herramienta del servidor MCP"""
+        """Call MCP server tool"""
         try:
-            # Limpiar y mapear parámetros
             clean_params = {k: v for k, v in params.items() if v is not None and v != ""}
             if self.tool_configs and tool_name in self.tool_configs:
                 mapping = self.tool_configs[tool_name] or {}
@@ -130,7 +128,7 @@ class StdioMCPClient(BaseMCPClient):
                 "arguments": args_dict
             })
             
-            # Procesar resultado
+            # Procesar response
             result_str = self._process_result(result)
             
             # Log successful call
@@ -157,7 +155,7 @@ class StdioMCPClient(BaseMCPClient):
             raise
     
     def _process_result(self, result) -> str:
-        """Procesar resultado del servidor MCP"""
+        """Process MCP server result"""
         if not result:
             return ""
         
@@ -183,7 +181,7 @@ class StdioMCPClient(BaseMCPClient):
         return self._tools
     
     def _load_tool_config(self):
-        """Cargar configuración de herramientas desde módulo Python"""
+        """Load tool settings from Python module"""
         if not self.config_module:
             return
         
