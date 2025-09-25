@@ -517,3 +517,169 @@
 2025-09-23 17:50:05,391 - MCP_Interactions - INFO - [music] analyze_song({'song_name': 'Worldwide', 'artist': 'Big Time Rush'}) -> SUCCESS
 2025-09-23 17:55:27,927 - MCP_Interactions - INFO - [kitchen] suggest_ingredient_substitution({'ingredient': 'orange juice'}) -> SUCCESS
 2025-09-23 17:56:02,905 - MCP_Interactions - INFO - [kitchen] get_food_by_name({'name': 'strawberry'}) -> SUCCESS
+2025-09-25 04:07:44,942 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 04:07:45,184 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 04:07:45,391 - MCP_Interactions - INFO - Server [github] (stdio): connected - 26 tools available
+2025-09-25 04:07:46,353 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 04:07:47,511 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 04:07:47,956 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 04:07:58,175 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPSConnectionPool(host='mcp-color-server.onrender.com', port=443): Read timed out. (read timeout=10)
+2025-09-25 04:08:28,516 - MCP_Interactions - INFO - [github] create_repository({'name': 'redes', 'description': 'Repository for networking projects', 'private': False, 'autoInit': True}) -> SUCCESS
+2025-09-25 04:09:02,554 - MCP_Interactions - INFO - [filesystem] create_directory({'path': 'redes'}) -> SUCCESS
+2025-09-25 04:10:53,699 - MCP_Interactions - INFO - [git] git_init({'path': 'C:/Users/Ale/TempProjects/redes', 'bare': False, 'initialBranch': 'main', 'quiet': False}) -> SUCCESS
+2025-09-25 04:12:19,124 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'C:/Users/Ale/TempProjects/redes/README.md', 'content': '# Redes Project\n\nThis is a random project about networking and communication protocols. We aim to build a comprehensive system to facilitate secure and efficient data exchange between various devices and platforms.'}) -> SUCCESS
+2025-09-25 04:21:07,954 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 04:21:08,255 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 04:21:08,528 - MCP_Interactions - INFO - Server [github] (stdio): connected - 26 tools available
+2025-09-25 04:21:09,571 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 04:21:10,891 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 04:21:11,390 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 04:21:11,730 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 04:21:21,753 - MCP_Interactions - INFO - [filesystem] create_directory({'path': 't'}) -> SUCCESS
+2025-09-25 04:21:31,567 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': 't'}) -> SUCCESS
+2025-09-25 04:21:50,888 - MCP_Interactions - INFO - [git] git_status({'path': 't'}) -> SUCCESS
+2025-09-25 04:24:37,744 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': 'C:/Users/Ale/TempProjects/t'}) -> SUCCESS
+2025-09-25 04:25:26,577 - MCP_Interactions - INFO - [github] create_repository({'name': 't', 'autoInit': True}) -> SUCCESS
+2025-09-25 04:25:59,618 - MCP_Interactions - INFO - [git] git_init({'path': 'C:\\Users\\Ale\\TempProjects\\t', 'bare': False, 'initialBranch': 'main', 'quiet': False}) -> SUCCESS
+2025-09-25 04:26:35,877 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'C:/Users/Ale/TempProjects/t/README.md', 'content': 'Butterfly Melody Sunrise Enchantment'}) -> SUCCESS
+2025-09-25 04:28:34,824 - MCP_Interactions - INFO - [git] git_commit({'message': 'test: initial README', 'path': 'C:/Users/Ale/TempProjects/t'}) -> SUCCESS
+2025-09-25 04:29:59,676 - MCP_Interactions - INFO - [git] git_remote({'mode': 'add', 'name': 'origin', 'url': 'https://github.com/alee2602/t.git', 'path': 'C:\\Users\\Ale\\TempProjects\\t'}) -> SUCCESS
+2025-09-25 04:30:29,301 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': 'C:\\Users\\Ale\\TempProjects\\t'}) -> SUCCESS
+2025-09-25 04:38:31,769 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 04:38:32,025 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 04:38:32,245 - MCP_Interactions - INFO - Server [github] (stdio): connected - 26 tools available
+2025-09-25 04:38:33,225 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 04:38:34,439 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 04:38:34,883 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 04:38:45,122 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPSConnectionPool(host='mcp-color-server.onrender.com', port=443): Read timed out. (read timeout=10)
+2025-09-25 04:39:47,568 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 04:39:47,812 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 04:39:48,013 - MCP_Interactions - INFO - Server [github] (stdio): connected - 26 tools available
+2025-09-25 04:39:48,909 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 04:39:50,015 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 04:39:50,445 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 04:39:50,992 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 04:40:26,304 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'feature/test'}) -> SUCCESS
+2025-09-25 04:40:53,811 - MCP_Interactions - ERROR - [git] git_checkout({'branchOrPath': 'feature/test', 'newBranch': False, 'force': False, 'path': ''}) -> ERROR: Server error: {'code': -32602, 'message': 'MCP error -32602: Invalid arguments for tool git_checkout: [\n  {\n    "code": "invalid_type",\n    "expected": "string",\n    "received": "boolean",\n    "path": [\n      "newBranch"\n    ],\n    "message": "Expected string, received boolean"\n  }\n]'}
+2025-09-25 04:41:07,672 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test', 'path': '.'}) -> SUCCESS
+2025-09-25 04:41:22,673 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '/path/to/repo'}) -> SUCCESS
+2025-09-25 04:42:29,427 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 04:42:29,667 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 04:42:30,591 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 04:42:31,736 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 04:42:32,187 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 04:42:32,774 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 04:42:46,470 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'feature/test', 'force': True}) -> SUCCESS
+2025-09-25 04:43:00,026 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-25 04:44:07,491 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 04:44:07,735 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 04:44:08,684 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 04:44:09,825 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 04:44:10,259 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 04:44:10,655 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 04:44:15,369 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-25 04:44:29,126 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'feature/test', 'path': '.'}) -> SUCCESS
+2025-09-25 04:45:04,072 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-25 04:46:30,887 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 04:46:31,127 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 04:46:32,077 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 04:46:33,312 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 04:46:33,768 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 04:46:34,260 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 04:46:41,300 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'feature/test', 'force': True}) -> SUCCESS
+2025-09-25 04:46:51,596 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-25 04:47:07,539 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'test', 'path': '.'}) -> SUCCESS
+2025-09-25 04:49:00,339 - MCP_Interactions - ERROR - [git] git_branch({'mode': 'show', 'path': '.'}) -> ERROR: Server error: {'code': -32602, 'message': 'MCP error -32602: Invalid arguments for tool git_branch: [\n  {\n    "received": "show",\n    "code": "invalid_enum_value",\n    "options": [\n      "list",\n      "create",\n      "delete",\n      "rename",\n      "show-current"\n    ],\n    "path": [\n      "mode"\n    ],\n    "message": "Invalid enum value. Expected \'list\' | \'create\' | \'delete\' | \'rename\' | \'show-current\', received \'show\'"\n  }\n]'}
+2025-09-25 04:51:53,045 - MCP_Interactions - ERROR - [git] git_branch({'mode': 'show', 'path': '.'}) -> ERROR: Server error: {'code': -32602, 'message': 'MCP error -32602: Invalid arguments for tool git_branch: [\n  {\n    "received": "show",\n    "code": "invalid_enum_value",\n    "options": [\n      "list",\n      "create",\n      "delete",\n      "rename",\n      "show-current"\n    ],\n    "path": [\n      "mode"\n    ],\n    "message": "Invalid enum value. Expected \'list\' | \'create\' | \'delete\' | \'rename\' | \'show-current\', received \'show\'"\n  }\n]'}
+2025-09-25 04:52:07,816 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'test'}) -> SUCCESS
+2025-09-25 04:52:54,831 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': 'This is a test branch readme file.'}) -> SUCCESS
+2025-09-25 04:53:11,594 - MCP_Interactions - INFO - [git] git_add({'files': ['README.md'], 'path': '.'}) -> SUCCESS
+2025-09-25 04:57:40,882 - MCP_Interactions - INFO - [git] git_commit({'message': 'testiiing', 'path': '.'}) -> SUCCESS
+2025-09-25 04:59:11,561 - MCP_Interactions - INFO - [git] git_push({'branch': 'feature/test', 'path': '.'}) -> SUCCESS
+2025-09-25 04:59:38,797 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'branch': 'feature/test', 'remote': 'origin'}) -> SUCCESS
+2025-09-25 04:59:44,413 - MCP_Interactions - INFO - [git] git_push({'branch': 'feature/test', 'path': '.'}) -> SUCCESS
+2025-09-25 05:01:18,411 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'branch': 'feature/test', 'remote': 'origin', 'setUpstream': True}) -> SUCCESS
+2025-09-25 05:02:40,330 - MCP_Interactions - INFO - [git] git_push({'branch': 'feature/test', 'path': '.', 'setUpstream': True}) -> SUCCESS
+2025-09-25 05:02:47,032 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '/path/to/your/repository'}) -> SUCCESS
+2025-09-25 05:04:23,239 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-25 05:04:32,082 - MCP_Interactions - INFO - [git] git_push({'branch': 'feature/test', 'path': '.', 'setUpstream': True}) -> SUCCESS
+2025-09-25 05:05:01,751 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'branch': 'feature/test', 'setUpstream': True}) -> SUCCESS
+2025-09-25 05:06:24,502 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 05:06:24,795 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 05:06:25,857 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 05:06:27,135 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 05:06:27,646 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 05:06:37,839 - MCP_Interactions - ERROR - Server [colors] (http): failed: HTTPSConnectionPool(host='mcp-color-server.onrender.com', port=443): Read timed out. (read timeout=10)
+2025-09-25 05:06:41,840 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'test', 'path': '.'}) -> SUCCESS
+2025-09-25 05:06:52,961 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-25 05:07:04,706 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'test', 'path': '.'}) -> SUCCESS
+2025-09-25 05:07:40,905 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'feature/test', 'path': '.'}) -> SUCCESS
+2025-09-25 05:07:54,018 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'test', 'path': '.'}) -> SUCCESS
+2025-09-25 05:08:18,591 - MCP_Interactions - INFO - [filesystem] create_directory({'path': '.'}) -> SUCCESS
+2025-09-25 05:08:32,164 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': '# My Project\n\nThis is a new project with a random description.'}) -> SUCCESS
+2025-09-25 05:08:43,557 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': '# My Project\n\nThis is a project for [describe the project purpose and functionality].'}) -> SUCCESS
+2025-09-25 05:08:53,564 - MCP_Interactions - INFO - [git] git_add({'files': ['README.md'], 'path': '.'}) -> SUCCESS
+2025-09-25 05:09:13,180 - MCP_Interactions - INFO - [git] git_commit({'message': 'testiiing', 'path': '.'}) -> SUCCESS
+2025-09-25 05:10:06,470 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'branch': 'test'}) -> SUCCESS
+2025-09-25 05:10:26,627 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'remote': 'origin', 'branch': 'test'}) -> SUCCESS
+2025-09-25 05:12:25,681 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 05:12:25,929 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 05:12:26,858 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 05:12:28,021 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 05:12:28,470 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 05:12:28,885 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 05:12:51,979 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'test', 'force': True}) -> SUCCESS
+2025-09-25 05:13:06,411 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'test', 'path': 'C:\\Users\\Ale\\OneDrive - UVG\\Escritorio\\Cuarto Año\\Semestre2\\Redes\\MCP-CHATBOT-HOST', 'force': True}) -> SUCCESS
+2025-09-25 05:13:20,955 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-25 05:13:31,132 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'test', 'path': '.'}) -> SUCCESS
+2025-09-25 05:14:10,090 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'test', 'path': '.'}) -> SUCCESS
+2025-09-25 05:14:30,052 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': 'This is a README file for the test branch.'}) -> SUCCESS
+2025-09-25 05:14:52,487 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': 'Help, I need somebody'}) -> SUCCESS
+2025-09-25 05:15:27,300 - MCP_Interactions - INFO - [git] git_add({'files': ['README.md']}) -> SUCCESS
+2025-09-25 05:16:15,344 - MCP_Interactions - INFO - [git] git_commit({'message': 'testiiing', 'path': '.'}) -> SUCCESS
+2025-09-25 05:16:58,652 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'branch': 'test'}) -> SUCCESS
+2025-09-25 05:17:54,843 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'test', 'force': True, 'path': '/path/to/your/repo'}) -> SUCCESS
+2025-09-25 05:18:06,350 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'test', 'force': True, 'path': 'C:\\path\\to\\your\\repo'}) -> SUCCESS
+2025-09-25 05:18:14,340 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': 'C:\\path\\to\\your\\repo'}) -> SUCCESS
+2025-09-25 05:18:56,562 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 05:18:56,813 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 05:18:57,739 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 05:18:59,010 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 05:18:59,457 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 05:18:59,787 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 05:19:04,627 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'test', 'force': True, 'path': '.'}) -> SUCCESS
+2025-09-25 05:19:24,803 - MCP_Interactions - INFO - [git] git_set_working_dir({'path': '.'}) -> SUCCESS
+2025-09-25 05:19:33,095 - MCP_Interactions - INFO - [git] git_branch({'mode': 'create', 'branchName': 'test', 'path': '.'}) -> SUCCESS
+2025-09-25 05:20:33,449 - MCP_Interactions - INFO - [git] git_checkout({'branchOrPath': 'test'}) -> SUCCESS
+2025-09-25 05:20:53,156 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': 'This is a README file in the test branch.'}) -> SUCCESS
+2025-09-25 05:22:05,146 - MCP_Interactions - INFO - [filesystem] write_file({'path': 'README.md', 'content': '# Project Description\n\nThis is a project repository. The README file provides an overview of the project and its purpose.'}) -> SUCCESS
+2025-09-25 05:22:57,113 - MCP_Interactions - INFO - [git] git_status({'path': '.'}) -> SUCCESS
+2025-09-25 05:23:19,592 - MCP_Interactions - INFO - [git] git_add({'files': ['README.md']}) -> SUCCESS
+2025-09-25 05:23:32,961 - MCP_Interactions - INFO - [git] git_commit({'message': 'testiiing', 'path': '.'}) -> SUCCESS
+2025-09-25 05:24:30,623 - MCP_Interactions - INFO - [git] git_push({'path': '.', 'branch': 'test'}) -> SUCCESS
+2025-09-25 05:25:39,519 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 05:25:39,773 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 05:25:40,761 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 05:25:42,039 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 05:25:42,471 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 05:25:42,969 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 05:25:53,288 - MCP_Interactions - INFO - [git] git_branch({'mode': 'delete', 'branchName': 'test', 'force': True}) -> SUCCESS
+2025-09-25 05:27:28,716 - MCP_Interactions - INFO - [colors] rgb_to_hex({'r': 0, 'g': 0, 'b': 255}) -> SUCCESS
+2025-09-25 05:27:48,629 - MCP_Interactions - INFO - [music] analyze_song({'song_name': 'Toxic', 'artist': 'Britney Spears'}) -> SUCCESS
+2025-09-25 05:28:06,824 - MCP_Interactions - INFO - [music] find_similar_songs({'song_name': 'Pillowtalk', 'artist': 'Zayn', 'count': 2}) -> SUCCESS
+2025-09-25 05:29:32,296 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 05:29:32,540 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 05:29:33,459 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 05:29:34,664 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 05:29:35,108 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 05:29:35,442 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 05:29:39,792 - MCP_Interactions - INFO - [kitchen] get_food_by_name({'name': 'Strawberry'}) -> SUCCESS
+2025-09-25 05:30:26,550 - MCP_Interactions - INFO - [kitchen] recommend_by_mood_and_season({'mood': 'sad', 'season': 'any', 'type': 'food'}) -> SUCCESS
+2025-09-25 05:31:43,700 - MCP_Interactions - INFO - Server [music] (fastmcp): connected - 5 tools available
+2025-09-25 05:31:43,946 - MCP_Interactions - INFO - Server [filesystem] (stdio): connected - 14 tools available
+2025-09-25 05:31:44,913 - MCP_Interactions - INFO - Server [git] (stdio): connected - 25 tools available
+2025-09-25 05:31:46,174 - MCP_Interactions - INFO - Server [eclipse] (fastmcp): connected - 3 tools available
+2025-09-25 05:31:46,615 - MCP_Interactions - INFO - Server [kitchen] (stdio): connected - 11 tools available
+2025-09-25 05:31:47,015 - MCP_Interactions - INFO - Server [colors] (http): connected - 4 tools available
+2025-09-25 05:32:21,172 - MCP_Interactions - INFO - [kitchen] get_recipes_by_ingredients({'ingredients': ['tomatoes', 'red bell peppers', 'red onions']}) -> SUCCESS
+2025-09-25 05:32:52,135 - MCP_Interactions - INFO - [music] analyze_song({'song_name': 'Boyfriend'}) -> SUCCESS

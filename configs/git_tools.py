@@ -2,6 +2,38 @@ TOOL_CONFIGS = {}
 
 ANTHROPIC_TOOLS = [
     {
+        "name": "git_init",
+        "description": "Initializes a new Git repository at the given absolute path",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "path": {"type": "string", "description": "Absolute path to initialize"},
+                "initialBranch": {"type": "string", "description": "Initial branch name (e.g., 'main')"},
+                "bare": {"type": "boolean", "description": "Create a bare repository"},
+                "quiet": {"type": "boolean", "description": "Suppress output"}
+            },
+            "required": ["path"]
+        }
+    },
+    {
+        "name": "git_remote",
+        "description": "Manages remote repositories (list, add, remove, show, set-url)",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "path": {"type": "string", "description": "Working directory path"},
+                "mode": {
+                    "type": "string",
+                    "enum": ["list", "add", "remove", "show", "set-url"],
+                    "description": "Remote operation mode"
+                },
+                "name": {"type": "string", "description": "Remote name (e.g., 'origin')"},
+                "url": {"type": "string", "description": "Remote URL (SSH or HTTPS)"}
+            },
+            "required": ["mode"]
+        }
+    },
+    {
         "name": "git_branch",
         "description": "Manages branches (list, create, delete, rename, show current)",
         "input_schema": {

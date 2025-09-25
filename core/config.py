@@ -13,10 +13,10 @@ DEFAULT_LOG_FILE = "mcp_interactions.log"
 
 # Configuraciones de Anthropic
 DEFAULT_MODEL = "claude-3-haiku-20240307"
-MAX_TOKENS = 120
-MAX_CONVERSATION_HISTORY = 5
+MAX_TOKENS = 500
+MAX_CONVERSATION_HISTORY = 20
 
-# Timeouts (en segundos)
+# Timeouts 
 TOOL_CALL_TIMEOUT = 30
 SERVER_RESPONSE_TIMEOUT = 10
 HTTP_REQUEST_TIMEOUT = 30

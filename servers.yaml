@@ -7,7 +7,7 @@ music:
 filesystem:
   type: stdio
   cmd: ["node", "C:/Users/Ale/AppData/Roaming/npm/node_modules/@modelcontextprotocol/server-filesystem/dist/index.js", "."]
-  cwd: "."
+  cwd: "." 
   config_module: "configs/filesystem_tools.py"
 
 git:

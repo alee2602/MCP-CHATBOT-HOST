@@ -10,7 +10,8 @@ from clients.http import HTTPMCPClient
 #from clients.simple_api import SimpleAPIClient
 from utils.logger import mcp_logger
 from .config import ANTHROPIC_API_KEY
-
+from colorama import Back, Fore, Style, init
+init()
 
 class ModularMCPChatbot:
     """Chatbot that manages multiple MCP servers"""
@@ -30,15 +31,15 @@ class ModularMCPChatbot:
                 await self._load_single_mcp(name, settings)
             
             if not self.mcps:
-                print("❌ No MCPs connected successfully")
+                print(f"{Fore.RED}No MCPs connected successfully{Style.RESET_ALL}")
             else:
-                print(f"✅ Ready! Connected to {len(self.mcps)} service(s)")
+                print(f"{Fore.GREEN}Ready! Connected to {len(self.mcps)} service(s){Style.RESET_ALL}")
                 self._print_servers_summary()
                 
         except FileNotFoundError:
-            print(f"❌ Configuration file {self.config_file} not found")
+            print(f"{Fore.RED} Configuration file {self.config_file} not found{Style.RESET_ALL}")
         except Exception as e:
-            print(f"❌ Error loading MCPs: {e}")
+            print(f"{Fore.RED} Error loading MCPs: {e}{Style.RESET_ALL}")
     
     async def _load_single_mcp(self, name: str, settings: Dict[str, Any]):
         server_type = settings.get("type", "stdio")
@@ -53,7 +54,7 @@ class ModularMCPChatbot:
             elif server_type == "api":
                 client = await self._create_api_client(name, settings)
             else:
-                print(f"❌ Unknown server type '{server_type}' for {name}")
+                print(f"{Fore.RED} Unknown server type '{server_type}' for {name}{Style.RESET_ALL}")
                 return
             
             tools = await client.initialize()
@@ -65,10 +66,11 @@ class ModularMCPChatbot:
                 "type": server_type
             }
             
-            print(f"🟢 Connected to {name} ({server_type}): {len(tools)} tools, {len(anthropic_tools)} anthropic tools")
+            print(f"{Fore.GREEN} Connected to {Fore.CYAN}{name}{Fore.GREEN} ({server_type}): {len(tools)} tools, {len(anthropic_tools)} anthropic tools{Style.RESET_ALL}")
             
         except Exception as e:
-            print(f"🔴 Failed to connect to {name}: {e}")
+            print(f"{Fore.RED} Failed to connect to {name}: {e}{Style.RESET_ALL}")
+
     
     async def _create_fastmcp_client(self, name: str, settings: Dict[str, Any]):
         cmd = settings["cmd"]
@@ -94,11 +96,11 @@ class ModularMCPChatbot:
     
     def _print_servers_summary(self):
         """Show summary of connected servers"""
-        print("\n📋 CONNECTED SERVERS:")
+        print(f"\n{Fore.CYAN}{Style.BRIGHT}📋 CONNECTED SERVERS:{Style.RESET_ALL}")
         for name, info in self.mcps.items():
             client = info["client"]
             server_info = client.get_server_info()
-            print(f"  • {name} ({info['type']}): {server_info['tools_count']} tools")
+            print(f"  {Fore.YELLOW}• {name}{Fore.CYAN} ({info['type']}): {Fore.WHITE}{server_info['tools_count']} tools{Style.RESET_ALL}")
         print()
     
     async def call_mcp_tool(self, server: str, tool: str, params: Dict[str, Any]) -> str:
@@ -232,25 +234,25 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
     
     async def chat(self):
         """Main chat loop"""
-        print("=" * 40)
-        print("Multi-Service Chatbot")
-        print("=" * 40)
+        print(f"\n{Fore.MAGENTA}{Style.BRIGHT}{'='*50}{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}{Style.BRIGHT}{Back.BLACK}  MULTI-SERVICE CHATBOT  {Style.RESET_ALL}")
+        print(f"{Fore.MAGENTA}{Style.BRIGHT}{'='*50}{Style.RESET_ALL}")
         
         await self.load_mcps()
         
-        print("💬 Chat with me! The assistant will use appropriate tools automatically.")
-        print("📝 Commands: '/quit' to exit, '/log' for MCP interactions, '/history' for conversation, '/servers' for server info")
+        print(f"{Fore.YELLOW}💬 Chat with me! The assistant will use appropriate tools automatically.{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}📋 Commands: '/quit' to exit, '/log' for MCP interactions, '/history' for conversation, '/servers' for server info{Style.RESET_ALL}")
         print()
         
         try:
             while True:
-                user_input = input("> ").strip()
+                user_input = input(f"{Fore.GREEN}> {Style.RESET_ALL}").strip()
                 
                 if not user_input:
                     continue
                 
                 if user_input.lower() in ["/quit", "/exit", "/q"]:
-                    print("👋 Goodbye!")
+                    print(f"{Fore.YELLOW}👋 Goodbye!{Style.RESET_ALL}")
                     break
                 elif user_input.lower() == "/log":
                     mcp_logger.print_interaction_log()
@@ -259,15 +261,15 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
                     self._print_servers_summary()
                     continue
                 
-                print("🤔 Thinking...")
+                print(f"{Fore.MAGENTA} Assitant is thinking...{Style.RESET_ALL}")
                 response = await self.call_anthropic_with_tools(user_input)
-                print(f"\n{response}\n")
+                print(f"{Fore.CYAN} Assistant said:{Style.RESET_ALL} {Fore.WHITE}{response}{Style.RESET_ALL}\n")
                 
                 self.conversation_history.append(("user", user_input))
                 self.conversation_history.append(("assistant", response))
         
         except KeyboardInterrupt:
-            print("\n👋 Goodbye!")
+            print(f"\n{Fore.YELLOW}👋 Goodbye!{Style.RESET_ALL}")
         
         finally:
             await self.cleanup()
@@ -320,32 +322,32 @@ Be conversational and natural. Use the appropriate tools when users ask for spec
             print(f"Failed to save conversation: {e}")
     
     def _print_conversation_history(self):
-        print("\n" + "="*60)
-        print("CONVERSATION HISTORY")
-        print("="*60)
+        print(f"\n{Fore.MAGENTA}{'='*60}{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}{Style.BRIGHT}CONVERSATION HISTORY{Style.RESET_ALL}")
+        print(f"{Fore.MAGENTA}{'='*60}{Style.RESET_ALL}")
         
         if not self.conversation_history:
-            print("No conversation history yet.")
+            print(f"{Fore.YELLOW}No conversation history yet.{Style.RESET_ALL}")
             return
         
         for i, (role, content) in enumerate(self.conversation_history, 1):
-            role_name = "User" if role == "user" else "Assistant"
+            role_name = f"{Fore.GREEN}User{Style.RESET_ALL}" if role == "user" else f"{Fore.CYAN}Assistant{Style.RESET_ALL}"
             
-            print(f"\n[{i}] {role_name}:")
-            print("-" * 40)
+            print(f"\n{Fore.WHITE}[{i}] {role_name}:{Style.RESET_ALL}")
+            print(f"{Fore.WHITE}{'-'*40}{Style.RESET_ALL}")
             
             if len(content) > 200:
-                print(f"{content[:200]}...")
-                print(f"[Message truncated - {len(content)} total characters]")
+                print(f"{Fore.WHITE}{content[:200]}...{Style.RESET_ALL}")
+                print(f"{Fore.YELLOW}[Message truncated - {len(content)} total characters]{Style.RESET_ALL}")
             else:
-                print(content)
+                print(f"{Fore.WHITE}{content}{Style.RESET_ALL}")
         
-        print(f"\nTotal messages: {len(self.conversation_history)}")
+        print(f"\n{Fore.CYAN}Total messages: {len(self.conversation_history)}{Style.RESET_ALL}")
         user_count = len([h for h in self.conversation_history if h[0] == "user"])
         assistant_count = len([h for h in self.conversation_history if h[0] == "assistant"])
-        print(f"User messages: {user_count}")
-        print(f"Assistant messages: {assistant_count}")
-        print("="*60)
+        print(f"{Fore.GREEN}User messages: {user_count}{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}Assistant messages: {assistant_count}{Style.RESET_ALL}")
+        print(f"{Fore.MAGENTA}{'='*60}{Style.RESET_ALL}")
     
     def get_conversation_history(self) -> List[Tuple[str, str]]:
         return self.conversation_history.copy()
