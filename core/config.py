@@ -12,9 +12,9 @@ DEFAULT_CONFIG_FILE = "servers.yaml"
 DEFAULT_LOG_FILE = "mcp_interactions.log"
 
 # Configuraciones de Anthropic
-DEFAULT_MODEL = "claude-3-haiku-20240307"
-MAX_TOKENS = 500
-MAX_CONVERSATION_HISTORY = 20
+DEFAULT_MODEL = "claude-3-5-haiku-20241022"
+MAX_TOKENS = 250
+MAX_CONVERSATION_HISTORY = 8
 
 # Timeouts 
 TOOL_CALL_TIMEOUT = 30
@@ -26,5 +26,5 @@ LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 LOG_LEVEL = "INFO"
 
 # Límites de resultados
-MAX_RESULT_LENGTH = 500  # Para truncar resultados largos en logs
+MAX_RESULT_LENGTH = 400  # Para truncar resultados largos en logs
 MAX_LOG_ENTRIES = 100    # Máximo número de entradas en el log

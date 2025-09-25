@@ -171,7 +171,7 @@ class ModularMCPChatbot:
 
 Available services: {list(self.mcps.keys())}
 
-Be conversational and natural. Use the appropriate tools when users ask for specific functionality. Keep responses concise."""
+Be conversational and natural. Use the appropriate tools when users ask for specific functionality. Keep responses concise and short, please."""
             
             payload = {
                 "model": DEFAULT_MODEL,  
