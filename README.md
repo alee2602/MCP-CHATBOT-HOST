@@ -19,8 +19,6 @@ MCP-CHATBOT-HOST
 │   requirements.txt
 │   servers.yaml
 │
-├───anthropic
-│       client.py
 │
 ├───clients
 │   │   base.py
@@ -72,8 +70,6 @@ MCP-CHATBOT-HOST
 - core/ -> Main chatbot logic and configuration.
 
 - clients/ -> Transport clients (FastMCP, HTTP, stdio).
-
-- anthropic/ -> Integration with Anthropic’s client library.
 
 - mymcpserver/ -> Custom Music MCP server, handling playlist generation and music tools.
 
@@ -161,6 +157,9 @@ Internally, the logic is handled by:
 - main.py: entry point of the Music MCP server.
 
 This server was designed to demonstrate how a chatbot can provide personalized recommendations by combining natural language queries with structured dataset filtering.
+
+You can check the following server here:
+[**Music MCP Server**](https://github.com/alee2602/MCP-SERVER)
 
 ### **Remote MCP Server**
 
